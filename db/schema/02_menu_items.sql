@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS menu_items CASCADE;
+CREATE TABLE menu_items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  price INTEGER NOT NULL,
+  photo_url VARCHAR(255) NOT NULL,
+  preparation_time INTEGER NOT NULL
+);
