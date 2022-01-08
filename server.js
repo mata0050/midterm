@@ -1,6 +1,7 @@
 // load .env data into process.env
 require("dotenv").config();
 
+
 // Web server config
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
@@ -21,6 +22,8 @@ app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ extended: false }));
+
 
 app.use(
   "/styles",
@@ -37,11 +40,15 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const restaurantRoutes = require("./routes/restaurant");
+const authRoutes = require("./routes/auth");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
+app.use("/api/restaurant", restaurantRoutes(db));
+app.use("/api/auth", authRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -51,6 +58,8 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
