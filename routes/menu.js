@@ -13,7 +13,9 @@ const { check, validationResult } = require("express-validator");
 const checkUserAdmin = require("../utils/checkUserAdmin");
 
 module.exports = (db) => {
-  // get all the menu items
+  // @route    GET /api/menu
+  // @desc     Get all the menu items
+  // @access   Public
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM menu_items;`)
       .then((data) => {
@@ -25,7 +27,47 @@ module.exports = (db) => {
       });
   });
 
-  // create  a new menu item
+  // @route    POST /api/menu
+  // @desc     Create a new item
+  // @access   Private
+  router.post("/", (req, res) => {
+    // const userId = req.cookies['user_id'];
+    const { userId, name, description, price, photo_url, preparation_time } =
+      req.body;
+
+    // check if user exists
+    const queryString = "SELECT * FROM users WHERE id = $1";
+
+    db.query(queryString, [userId])
+      .then((data) => {
+        const user = data.rows;
+
+        // check if user Admin
+        checkUserAdmin(user, res);
+
+        const query =
+          "INSERT INTO menu_items( name, description, price, photo_url, preparation_time) VALUES ( $1, $2, $3, $4, $5) RETURNING *";
+        const values = [name, description, price, photo_url, preparation_time];
+
+        db.query(query, values)
+          .then((data) => {
+            const menuItems = data.rows;
+            res.json({ menuItems });
+
+            // returns new item
+          })
+          .catch((err) => {
+            res.status(500).json({ error: err.message });
+          });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  // @route    PUT /api/menu
+  // @desc     Update menu item
+  // @access   Private
   router.put("/", (req, res) => {
     // get userID from cookie
     // const userId = req.cookies['user_id'];
@@ -102,48 +144,12 @@ module.exports = (db) => {
       });
   });
 
-  // update  a new menu item
-  router.post("/", (req, res) => {
-    // get userID from cookie
-    // const userId = req.cookies['user_id'];
-    // NOTE: waiting for auth
-    const { userId, name, description, price, photo_url, preparation_time } =
-      req.body;
 
-    // check if user exists
-    const queryString = "SELECT * FROM users WHERE id = $1";
-
-    db.query(queryString, [userId])
-      .then((data) => {
-        const user = data.rows;
-
-        // check if user Admin
-        checkUserAdmin(user, res);
-
-        const query =
-          "INSERT INTO menu_items( name, description, price, photo_url, preparation_time) VALUES ( $1, $2, $3, $4, $5) RETURNING *";
-        const values = [name, description, price, photo_url, preparation_time];
-
-        db.query(query, values)
-          .then((data) => {
-            const menuItems = data.rows;
-            res.json({ menuItems });
-
-            // returns new item
-          })
-          .catch((err) => {
-            res.status(500).json({ error: err.message });
-          });
-      })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
-  });
-  // delete item from table
+  // @route    DELETE /api/menu
+  // @desc     Delete menuitem from table
+  // @access   Private
   router.delete("/", (req, res) => {
-    // get userID from cookie
     // const userId = req.cookies['user_id'];
-    // NOTE: waiting for auth
     const { userId, menu_item_id } = req.body;
 
     // check if user exists
