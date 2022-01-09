@@ -12,7 +12,7 @@ const router = express.Router();
 const checkUserIsAdmin = require("../utils/checkUserIsAdmin");
 
 module.exports = (db) => {
-  // @route    GET /api/menu
+  // @route    GET /admin
   // @desc     Get all the menu items
   // @access   Public
   router.get("/", (req, res) => {
@@ -26,7 +26,7 @@ module.exports = (db) => {
       });
   });
 
-  // @route    POST /api/menu
+  // @route    POST /admin
   // @desc     Create a new item
   // @access   Private
   router.post("/", (req, res) => {
@@ -65,7 +65,7 @@ module.exports = (db) => {
       });
   });
 
-  // @route    PUT /api/menu
+  // @route    PUT /admin
   // @desc     Update menu item
   // @access   Private
   router.put("/", (req, res) => {
@@ -144,7 +144,7 @@ module.exports = (db) => {
       });
   });
 
-  // @route    DELETE /api/menu
+  // @route    DELETE /admin
   // @desc     Delete menuitem from table
   // @access   Private
   router.delete("/", (req, res) => {
