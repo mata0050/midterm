@@ -55,8 +55,24 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  const session = req.session.user_id;
+  const templateVars = {
+    userID: session,
+  };
+  res.render("index", templateVars);
 });
+
+// all 404 routes
+// app.get("*", (req, res) => {
+//   const session = req.session.user_id;
+
+//   // if user is logged in, redirect
+//   if (session) {
+//     res.redirect(`/users/${session}`);
+//     return;
+//   }
+//   res.status(404).send("Page does not exist!");
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
