@@ -26,12 +26,12 @@ module.exports = (db) => {
       });
   });
 
-  // @route    POST /admin
+  // @route    POST /menu
   // @desc     Create a new item
   // @access   Private
   router.post("/", (req, res) => {
     // const userID = req.cookies['userID'];
-    const session = req.session.user_id;
+    // const session = req.session.user_id;
     const { userId, name, description, price, photo_url, preparation_time } =
       req.body;
 
@@ -70,7 +70,7 @@ module.exports = (db) => {
   // @access   Private
   router.put("/", (req, res) => {
     // const userID = req.cookies["userID"];
-    const session = req.session.user_id;
+    // const session = req.session.user_id;
 
     const {
       userId,
@@ -148,7 +148,7 @@ module.exports = (db) => {
   // @desc     Delete menuitem from table
   // @access   Private
   router.delete("/", (req, res) => {
-    const userID = req.cookies["userID"];
+  ``  // const userID = req.cookies["userID"];
     const { userId, menu_item_id } = req.body;
 
     // check if user exists

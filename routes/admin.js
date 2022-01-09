@@ -4,7 +4,7 @@ module.exports = (db) => {
   // @route    GET /orders
   // @desc     Get all active orders
   // @access   Private
-  router.get("/", (req, res) => {
+  router.get("/orders", (req, res) => {
     // const session = req.session.user_id;
     //NOTE: USE RUTA checkCurrentUser and check if admin
 
@@ -28,7 +28,7 @@ module.exports = (db) => {
   // @route    PUT /orders/:order_id
   // @desc     Mark order as complete status
   // @access   Private
-  router.put("/:order_id", (req, res) => {
+  router.put("/orders/:order_id", (req, res) => {
     // const session = req.session.user_id;
     //NOTE: USE RUTA checkCurrentUser and check if admin
 
