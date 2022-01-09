@@ -41,7 +41,8 @@ module.exports = (db) => {
         orders.status,
         orders.created_at AS time_ordered,
         JSON_AGG (json_build_object( 'menu_item_id', menu_items.id, 'menu_item_name', menu_items.name)) AS ordered_dishes,
-        SUM(menu_items.preparation_time) AS waiting_time
+        SUM(menu_items.preparation_time) AS waiting_time,
+        SUM(menu_items.price) AS total_price
         FROM orders
         JOIN users ON users.id = user_id
         JOIN selected_dishes ON orders.id = order_id
