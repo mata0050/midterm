@@ -35,6 +35,10 @@ module.exports = (db) => {
   router.get("/:id/orders", (req, res) => {
     const session = req.session.user_id;
     const userID = req.params.id;
+    if (isNaN(userID)) {
+      res.status(403).json({ error: "User does not exist" });
+      return;
+    }
 
     // if correct user is logged, show their orders
     checkCurrentUser(session, userID, db).then((isCorrectUser) => {
@@ -55,7 +59,8 @@ module.exports = (db) => {
         `;
         const values = [userID];
 
-        db.query(query, values)
+        return db
+          .query(query, values)
           .then((data) => {
             const orders = data.rows;
             console.log(orders[0]);
@@ -65,13 +70,14 @@ module.exports = (db) => {
             };
             console.log(templateVars);
             res.render("userOrders", templateVars);
+            return;
           })
           .catch((err) => {
             res.status(500).json({ error: err.message });
+            return;
           });
-      } else {
-        res.status(403).json({ error: "Must be logged in as correct user!" });
       }
+      res.status(403).json({ error: "Must be logged in as correct user!" });
     });
   });
 
@@ -79,6 +85,10 @@ module.exports = (db) => {
   router.post("/:id/orders", (req, res) => {
     const session = req.session.user_id;
     const userID = req.params.id;
+    if (isNaN(userID)) {
+      res.status(403).json({ error: "User does not exist" });
+      return;
+    }
 
     // TO DO:
     // get all data about the order and save it in db, send SMS to user, send SMS to admin, res.redirect("/:id/orders);
