@@ -1,8 +1,16 @@
-body {
-  margin:0;
+.feature-container {
+	width:1440px;
+	height:700px;
+	position:absolute;
+	left:0px;
+	top:64px;
+}
+.feature-body {
+	background-color:#FE724C;
+	width:1440px;
+	height:700px;
+	position:absolute;
+	left:0px;
+	top:0px;
 }
 
-.feature-container {
-  background-color: #FE724C;
-  height: 700px;
-}
