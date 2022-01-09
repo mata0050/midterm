@@ -1,3 +1,10 @@
--- Users table seeds here (Example)
-INSERT INTO users (name) VALUES ('Alice');
-INSERT INTO users (name) VALUES ('Kira');
+insert into users (id, name, phone_number, password_digest, admin) values (1, 'Easthope', '208-512-0558', 'IjZAgcfl7p92ldGxad68LJZdL17lhWy', false);
+insert into users (id, name, phone_number, password_digest, admin) values (2, 'Tytherton', '753-247-7392', 'IjZAgcfl7p92ldGxad68LJZdL17lhWy', false);
+insert into users (id, name, phone_number, password_digest, admin) values (3, 'Linforth', '259-857-5301', 'IjZAgcfl7p92ldGxad68LJZdL17lhWy', false);
+insert into users (id, name, phone_number, password_digest, admin) values (4, 'Keir', '680-767-4122', 'IjZAgcfl7p92ldGxad68LJZdL17lhWy', false);
+insert into users (id, name, phone_number, password_digest, admin) values (5, 'Mathie', '818-598-1569', 'IjZAgcfl7p92ldGxad68LJZdL17lhWy', false);
+insert into users (id, name, phone_number, password_digest, admin) values (6, 'Croyser', '812-875-5553', 'IjZAgcfl7p92ldGxad68LJZdL17lhWy', false);
+insert into users (id, name, phone_number, password_digest, admin) values (7, 'Boole', '251-937-1160', 'IjZAgcfl7p92ldGxad68LJZdL17lhWy', false);
+insert into users (id, name, phone_number, password_digest, admin) values (8, 'Jankowski', '778-532-6205', 'IjZAgcfl7p92ldGxad68LJZdL17lhWy', false);
+insert into users (id, name, phone_number, password_digest, admin) values (9, 'Frigot', '638-949-9008', 'IjZAgcfl7p92ldGxad68LJZdL17lhWy', false);
+insert into users (id, name, phone_number, password_digest, admin) values (10, 'Mayston', '897-484-9199', 'IjZAgcfl7p92ldGxad68LJZdL17lhWy', true);
