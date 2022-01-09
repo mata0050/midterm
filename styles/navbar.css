@@ -3,9 +3,12 @@ body {
 }
 .nav-container {
   background-color: #ffc529;
-  height: 64px;
+  height: 70px;
   position: relative;
   width: 100%;
+}
+.browser-menu-button {
+  height: 100%;
 }
 
 /* browse menu button styling */
@@ -40,8 +43,7 @@ margin-left: 10px;
 position: absolute;
 left: 81%;
 right: 12%;
-top: 19%;
-bottom: 1px
+top: 19px
 }
 
 
