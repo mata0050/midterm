@@ -45,10 +45,6 @@ module.exports = (db) => {
           return res.status(404).send("Please login as Admin");
         }
 
-        // res.json(user);
-
-        //
-
         const query =
           "INSERT INTO public.menu_items( name, description, price, photo_url, preparation_time) VALUES ( $1, $2, $3, $4, $5) RETURNING *";
         const values = [name, description, price, photo_url, preparation_time]
