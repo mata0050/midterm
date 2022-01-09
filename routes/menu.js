@@ -30,7 +30,8 @@ module.exports = (db) => {
   // @desc     Create a new item
   // @access   Private
   router.post("/", (req, res) => {
-    // const userId = req.cookies['user_id'];
+    // const userID = req.cookies['userID'];
+    const session = req.session.user_id;
     const { userId, name, description, price, photo_url, preparation_time } =
       req.body;
 
@@ -68,9 +69,9 @@ module.exports = (db) => {
   // @desc     Update menu item
   // @access   Private
   router.put("/", (req, res) => {
-    // get userID from cookie
-    // const userId = req.cookies['user_id'];
-    // NOTE: waiting for auth
+    // const userID = req.cookies["userID"];
+    const session = req.session.user_id;
+
     const {
       userId,
       menu_item_id,
@@ -147,7 +148,7 @@ module.exports = (db) => {
   // @desc     Delete menuitem from table
   // @access   Private
   router.delete("/", (req, res) => {
-    // const userId = req.cookies['user_id'];
+    const userID = req.cookies["userID"];
     const { userId, menu_item_id } = req.body;
 
     // check if user exists
