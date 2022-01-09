@@ -45,7 +45,7 @@ const ordersRoutes = require("./routes/orders");
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/admin", menuRoutes(db));
-app.use("/orders", ordersRoutes(db));
+app.use("/admin/orders", ordersRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
