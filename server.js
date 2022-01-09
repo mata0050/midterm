@@ -1,9 +1,12 @@
 // load .env data into process.env
 require("dotenv").config();
 
+// hello there.
+
 // Web server config
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
+const cookieSession = require("cookie-session");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
@@ -17,8 +20,13 @@ db.connect();
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["veryImportantKey1", "veryImportantKey2"],
+  })
+);
 app.use(morgan("dev"));
-
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -42,7 +50,7 @@ const menuRoutes = require("./routes/menu");
 const adminRoutes = require("./routes/admin");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
+app.use("/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/admin", adminRoutes(db));
 app.use("/menu", menuRoutes(db));
@@ -53,8 +61,24 @@ app.use("/menu", menuRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  const session = req.session.user_id;
+  const templateVars = {
+    userID: session,
+  };
+  res.render("index", templateVars);
 });
+
+// all 404 routes
+// app.get("*", (req, res) => {
+//   const session = req.session.user_id;
+
+//   // if user is logged in, redirect
+//   if (session) {
+//     res.redirect(`/users/${session}`);
+//     return;
+//   }
+//   res.status(404).send("Page does not exist!");
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
