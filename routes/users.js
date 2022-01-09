@@ -6,7 +6,10 @@ module.exports = (db) => {
   // -- log in user and redirect: -- //
   router.get("/:id", (req, res) => {
     const userID = req.params.id;
-
+    if (isNaN(userID)) {
+      res.status(403).json({ error: "User does not exist" });
+      return;
+    }
     // check if user with this id exist in the db:
     db.query(`SELECT * FROM users WHERE id = $1;`, [userID])
       .then((data) => {
@@ -16,12 +19,12 @@ module.exports = (db) => {
           req.session.user_id = userID;
           if (loggedInUser.admin === true) {
             res.redirect("/admin/orders");
-          } else {
-            res.redirect("/menu");
+            return;
           }
-        } else {
-          res.status(403).json({ error: "User does not exist" });
+          res.redirect("/menu");
+          return;
         }
+        res.status(403).json({ error: "User does not exist" });
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });

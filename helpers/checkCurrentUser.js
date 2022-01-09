@@ -6,9 +6,7 @@ const checkCurrentUser = (session, userID, db) => {
       const user = data.rows[0];
       return user.id === Number(session);
     })
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
-    });
+    .catch((err) => err);
 };
 
 module.exports = {
