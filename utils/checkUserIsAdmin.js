@@ -1,4 +1,4 @@
-const checkUserAdmin = (user, res) => {
+const checkUserIsAdmin = (user, res) => {
   if (user.length === 0) {
     return res.status(404).send("Please login");
   }
@@ -8,4 +8,4 @@ const checkUserAdmin = (user, res) => {
   }
 };
 
-module.exports = checkUserAdmin;
+module.exports = checkUserIsAdmin;
