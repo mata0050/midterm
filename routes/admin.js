@@ -6,6 +6,7 @@ module.exports = (db) => {
   // @access   Private
   router.get("/orders", (req, res) => {
     const session = req.session.user_id;
+    // NOTE- redirect to home page is not logged in . check if admin
 
     db.query(
       `SELECT orders.id, status, created_at as dateTime, users.name as customer_name, users.phone_number, menu_items.name as menu_item
@@ -37,6 +38,7 @@ module.exports = (db) => {
   router.put("/orders/:order_id", (req, res) => {
     // const session = req.session.user_id;
     //NOTE: USE RUTA checkCurrentUser and check if admin
+    // NOTE- redirect to home page is not logged in . check if admin
 
     const { order_id } = req.params;
     const { status } = req.body;

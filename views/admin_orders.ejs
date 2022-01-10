@@ -5,10 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Page</title>
+
+    <!-- styles -->
+    <link rel="stylesheet" href="/styles/admin-navbar.css" type="text/css" />
     <link rel="stylesheet" href="/styles/admin-order.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   </head>
   <body>
+    <%- include('partials/_admin_navbar') %>
     <main>
       <h1>Admin Order Dashboard</h1>
 
@@ -32,7 +36,11 @@
           <td><%=item.created_at %></td>
           <td><%= item.preparation_time %></td>
           <td><%= item.status %></td>
-          <td><button>Completed</button></td>
+          <td>
+            <form action="/orders/" method="GET">
+              <button>Completed</button>
+            </form>
+          </td>
         </tr>
 
         <%})%>
