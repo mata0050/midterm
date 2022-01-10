@@ -14,10 +14,68 @@
 	top:0px;
 }
 .feature-highlight-border {
-	border: 2px solid black;
 	width: 650px;
 	height: 522px;
 	position:absolute;
 	left:730px;
 	top:127px;
+}
+
+.feature-paragraph {
+	color:black;
+	width:422px;
+	height:85px;
+	position:absolute;
+	left: 145px;
+	top:376px;
+	font-family:Roboto;
+	text-align:left;
+	font-size:20px;
+	letter-spacing:0;
+}
+
+.feature-header {
+	color:black;
+	width:399px;
+	height:132px;
+	position:absolute;
+	left:145px;
+	top:155px;
+	font-family:Roboto;
+	text-align:left;
+	font-size:56px;
+	letter-spacing:0;
+}
+
+.browser-menu {
+	width:200px;
+	height:60px;
+	position:absolute;
+	left:0px;
+	top:297px;
+}
+
+.browser-menu-button {
+	background-color:rgba(0, 0, 0, 1);
+	width:200px;
+	height:60px;
+	position:absolute;
+	left:145px;
+	top:190px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+}
+.browser-menu-text {
+	color:rgba(255, 255, 255, 1);
+	width:151px;
+	height:22px;
+	position:absolute;
+	left:170px;
+	top:208px;
+	font-family:Roboto;
+	text-align:center;
+	font-size:18px;
+	letter-spacing:0;
 }
