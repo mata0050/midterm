@@ -65,6 +65,10 @@ const addItemsToSummary = () => {
     if (Object.keys(items).length !== 0) {
       localStorage.setItem("order", JSON.stringify(items));
     }
+    flash("Menu item removed!", {
+      bgColor: "#aa714a",
+      ftColor: "black",
+    });
     addItemsToSummary();
   });
 };
