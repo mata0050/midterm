@@ -108,7 +108,10 @@ $(document).ready(function () {
   // send user's selected menu items to POST /orders
   $("#place-order-btn").on("click", function (e) {
     if (localStorage.getItem("order")) {
-      const phoneNumber = `+${getPhoneNumber().match(/\d+/g).join("")}`;
+      let phoneNumber = getPhoneNumber().match(/\d+/g);
+      if (phoneNumber) {
+        phoneNumber = phoneNumber.join("");
+      }
       const newOrder = JSON.parse(localStorage.getItem("order"));
       const data = { ...newOrder, phoneNumber };
       $.ajax("/orders", { method: "POST", data })

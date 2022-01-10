@@ -5,7 +5,7 @@ const router = express.Router();
 const checkUserIsAdmin = require("../utils/checkUserIsAdmin");
 
 module.exports = (db) => {
-  // @route    GET /admin
+  // @route    GET /menu
   // @desc     Get all the menu items
   // @access   Public
   router.get("/", (req, res) => {
@@ -17,7 +17,6 @@ module.exports = (db) => {
           userID: session,
           menuItems,
         };
-        console.log(templateVars);
         res.render("menu", templateVars);
       })
       .catch((err) => {
