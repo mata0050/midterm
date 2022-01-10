@@ -1,10 +1,12 @@
-const addItemsToSumary = () => {
+const addItemsToSummary = () => {
+  //reset the summary table
   $(".summary-details").html("");
 
   let totalQuantity = 0;
   let totalPrice = 0;
   let totalTime = 0;
 
+  // get item data from local storage
   const items = JSON.parse(localStorage.getItem("order"));
   for (let itemID in items) {
     const menuItem = $("body").find(`#${itemID}`);
@@ -12,22 +14,26 @@ const addItemsToSumary = () => {
     const quantity = items[itemID];
     const price = menuItem.children("[data-price]").attr("data-price");
     const prepTime = menuItem.children("[data-time]").attr("data-time");
-    console.log({ name, price, prepTime });
 
     totalQuantity += Number(quantity);
     totalPrice += price * quantity;
     totalTime += prepTime * quantity;
 
     const itemDetails = `
-      <tr>
-      <td>${name}</td>
-      <td>${quantity}</td>
-      <td>${(price / 100).toFixed(2)}</td>
-      <td>${prepTime}</td>
-      </tr>
+    <tr id=${itemID}>
+    <td>${name}</td>
+    <td>${quantity}</td>
+    <td>${(price / 100).toFixed(2)}</td>
+    <td></td>
+    <td class="item-remove-btn">❌</td>
+    </tr>
     `;
 
     $(".summary-details").append(itemDetails);
+  }
+
+  if (totalTime > 100) {
+    totalTime = 110;
   }
 
   const tableHead = `
@@ -35,7 +41,7 @@ const addItemsToSumary = () => {
   <th>Menu Item</th>
   <th>Quantity</th>
   <th>Price</th>
-  <th>Prep time</th>
+  <th>Total prep time</th>
   </tr>
   `;
   $(".summary-details").prepend(tableHead);
@@ -45,14 +51,26 @@ const addItemsToSumary = () => {
     <td>Total:</td>
     <td>${totalQuantity}</td>
     <td>${(totalPrice / 100).toFixed(2)}</td>
-    <td>${totalTime}</td>
+    <td>${Math.floor(totalTime / 60)}h ${
+    totalTime - 60 * Math.floor(totalTime / 60)
+  } min</td>
     </tr>
   `;
   $(".summary-details").append(total);
+
+  // remove item from order
+  $(".item-remove-btn").on("click", function () {
+    delete items[$(this).parent().attr("id")];
+    localStorage.clear();
+    if (Object.keys(items).length !== 0) {
+      localStorage.setItem("order", JSON.stringify(items));
+    }
+    addItemsToSummary();
+  });
 };
 
 $(document).ready(function () {
-  addItemsToSumary();
+  addItemsToSummary();
 
   // save user's selected menu items to local storage
   $(".order-btn").on("click", function (e) {
@@ -65,7 +83,7 @@ $(document).ready(function () {
     order[menuItemID] = amount;
 
     localStorage.setItem("order", JSON.stringify(order));
-    addItemsToSumary();
+    addItemsToSummary();
     flash("Menu item added to order!", {
       bgColor: "#fe744d",
       ftColor: "black",
@@ -81,7 +99,7 @@ $(document).ready(function () {
           console.log(res);
           localStorage.clear();
           $("#order-summary").hide();
-          addItemsToSumary();
+          addItemsToSummary();
           flash(
             "Order received! You will receive an SMS confirmation shortly!",
             {
