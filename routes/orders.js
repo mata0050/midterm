@@ -8,34 +8,17 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     const userID = req.session.user_id;
 
+    // only save data if user is logged in
     if (userID) {
       const { phoneNumber } = req.body;
       console.log(phoneNumber);
       console.log(req.body);
-      // TO DO:
-      // if session is admin proceed, otherwise forbidden
-      // get all data about the order and save it in db, send SMS to user, send SMS to admin, res.redirect("/:id/orders);
       const orderDetails = req.body;
-      const dateTime = new Date();
-
       const query = `
-          INSERT INTO orders(status, created_at, user_id ) VALUES ( $1, $2, $3 ) RETURNING *
-          `;
-
+      INSERT INTO orders(status, created_at, user_id ) VALUES ( $1, $2, $3 ) RETURNING *
+      `;
+      const dateTime = new Date();
       const values = ["active", dateTime.toISOString(), userID];
-      console.log(values);
-
-      // return db
-      //   .query(query, values)
-      //   .then((data) => {
-      //     const orders = data.rows;
-      //     console.log(orders[0]);
-      //   })
-      //   .catch((err) => {
-      //     res.status(500).json({ error: err.message });
-      //     return;
-      //   });
-
       return db
         .query(query, values)
         .then((data) => {
@@ -58,9 +41,7 @@ module.exports = (db) => {
             }
           }
           // Insert all generated SQL statements into db
-          console.log(pgp);
           const sql = pgp.helpers.concat(queries);
-          console.log(sql);
           return db.query(sql);
         })
         .then(() => res.send("Order received!"))
@@ -75,38 +56,6 @@ module.exports = (db) => {
     }
 
     res.status(403).json({ error: "Must be logged in!" });
-
-    // db.query(queryString, [userID])
-    //   .then((data) => {
-    //     const user = data.rows;
-    //     checkUserIsAdmin(user, res);
-    //     const query =
-    //       "INSERT INTO menu_items( name, description, price, photo_url, preparation_time) VALUES ( $1, $2, $3, $4, $5) RETURNING *";
-    //     const values = [name, description, price, photo_url, preparation_time];
-    //     return query(query, values);
-    //   })
-    //   .then((data) => {
-    //     const menuItems = data.rows;
-    //     res.json({ menuItems });
-
-    //     // returns new item
-    //   })
-    //   .catch((err) => {
-    //     res.status(500).json({ error: err.message });
-    //   });
-
-    // const query = `
-
-    //     `;
-    // const values = [userID];
-
-    // db.query(query, values)
-    //   .then(() => {})
-    //   .catch((err) => {
-    //     res.status(500).json({ error: err.message });
-    //   });
-
-    // res.status(403).json({ error: "Forbidden!" });
   });
 
   return router;
