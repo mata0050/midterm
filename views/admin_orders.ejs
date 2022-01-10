@@ -6,10 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Page</title>
 
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <!-- styles -->
+    <link rel="stylesheet" href="/styles/form-styles.css" type="text/css" />
     <link rel="stylesheet" href="/styles/admin-navbar.css" type="text/css" />
     <link rel="stylesheet" href="/styles/admin-order.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/flash.js"></script>
+    <script type="text/javascript" src="/scripts/adminOrders.js"></script>
   </head>
   <body>
     <%- include('partials/_admin_navbar') %>
@@ -46,6 +61,21 @@
 
         <%})%>
       </table>
+      <form method="POST" action="" id="create-menu-item-form">
+        <i class="far fa-times-circle" id="close"></i>
+        <h2>Create a new Item for Menu</h2>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" />
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" />
+        <label for="price">Price</label>
+        <input type="text" id="price" name="price" />
+        <label for="photo_url">Photo Url</label>
+        <input type="text" id="photo_url" name="photo_url" />
+        <label for="preparation_time">Preparation Time</label>
+        <input type="text" id="preparation_time" name="preparation_time" />
+        <input type="submit" value="Add Item To the Menu" />
+      </form>
     </main>
   </body>
 </html>

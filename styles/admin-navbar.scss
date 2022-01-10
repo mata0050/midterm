@@ -12,15 +12,17 @@ nav {
   ul li {
     list-style-type: none;
 
-    a {
+    a,
+    span {
       text-decoration: none;
       color: black;
       font-size: 1.2rem;
       margin-right: 25px;
-
     }
-    a:hover {
+    a:hover,
+    span:hover {
       color: white;
+      cursor: pointer;
     }
   }
 }

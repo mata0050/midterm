@@ -1,8 +1,11 @@
-main {
-  text-align: center;
+body {
+  position: relative;
 }
 
-h1{
+
+
+h1 {
+  text-align: center;
   margin-top: 50px;
   margin-bottom: 30px;
 }
@@ -12,11 +15,10 @@ table {
   border-collapse: collapse;
   margin: 0 auto;
 
-  tr{
-   height: 40px;
-   border-bottom: 1px solid;
+  tr {
+    height: 40px;
+    border-bottom: 1px solid;
   }
-
 
   tr:first-child {
     background: #ffc529;
@@ -24,14 +26,15 @@ table {
     border-bottom: none;
   }
 
-  td, th{
+  td,
+  th {
     padding: 10px;
   }
 
-  button{
-    background: #FE724C;
+  button {
+    background: #fe724c;
     border: none;
-    padding:  8px 10px;
+    padding: 8px 10px;
     color: #fff;
     border-radius: 3px;
   }
