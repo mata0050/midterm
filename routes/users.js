@@ -59,6 +59,10 @@ module.exports = (db) => {
         `;
         const values = [userID];
 
+        // check this in views!
+        // if (totalTime > 100) {
+        //   totalTime = 110;
+        // }
         return db
           .query(query, values)
           .then((data) => {
@@ -78,36 +82,6 @@ module.exports = (db) => {
           });
       }
       res.status(403).json({ error: "Must be logged in as correct user!" });
-    });
-  });
-
-  // -- create new order: -- //
-  router.post("/:id/orders", (req, res) => {
-    const session = req.session.user_id;
-    const userID = req.params.id;
-    if (isNaN(userID)) {
-      res.status(403).json({ error: "User does not exist" });
-      return;
-    }
-
-    console.log(req.body);
-    // TO DO:
-    // get all data about the order and save it in db, send SMS to user, send SMS to admin, res.redirect("/:id/orders);
-    checkCurrentUser(session, userID, db).then((isCorrectUser) => {
-      if (isCorrectUser) {
-        const query = `
-
-        `;
-        const values = [userID];
-
-        db.query(query, values)
-          .then(() => {})
-          .catch((err) => {
-            res.status(500).json({ error: err.message });
-          });
-      } else {
-        res.status(403).json({ error: "Must be logged in as correct user!" });
-      }
     });
   });
 

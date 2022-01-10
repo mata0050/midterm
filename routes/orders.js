@@ -11,6 +11,7 @@ module.exports = (db) => {
     // TO DO:
     // if session is admin proceed, otherwise forbidden
     // get all data about the order and save it in db, send SMS to user, send SMS to admin, res.redirect("/:id/orders);
+    // set timeout send sms when  time expires to user and update db with status - ready for pick up
     res.send("New order received!");
     // const query = `
 
