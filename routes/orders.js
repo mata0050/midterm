@@ -1,4 +1,5 @@
 const express = require("express");
+const pgp = require("pg-promise")();
 const router = express.Router();
 const { checkCurrentUser } = require("../helpers/checkCurrentUser");
 
@@ -18,22 +19,22 @@ module.exports = (db) => {
       const dateTime = new Date();
 
       const query = `
-          INSERT INTO orders(status, created_at, user_id ) VALUES ( $2, $3, $4 ) RETURNING *
+          INSERT INTO orders(status, created_at, user_id ) VALUES ( $1, $2, $3 ) RETURNING *
           `;
 
-      const values = ["23", "active", dateTime.toISOString(), userID];
+      const values = ["active", dateTime.toISOString(), userID];
       console.log(values);
 
-      return db
-        .query(query, values)
-        .then((data) => {
-          const orders = data.rows;
-          console.log(orders[0]);
-        })
-        .catch((err) => {
-          res.status(500).json({ error: err.message });
-          return;
-        });
+      // return db
+      //   .query(query, values)
+      //   .then((data) => {
+      //     const orders = data.rows;
+      //     console.log(orders[0]);
+      //   })
+      //   .catch((err) => {
+      //     res.status(500).json({ error: err.message });
+      //     return;
+      //   });
 
       return db
         .query(query, values)
@@ -43,24 +44,26 @@ module.exports = (db) => {
           return order.id;
         })
         .then((orderID) => {
+          // create queries for all selected items according to the quantity of each item
+          let queries = [];
           for (const itemID in orderDetails) {
             const quantity = orderDetails[itemID];
             if (quantity !== phoneNumber) {
-              const query = `
-              INSERT INTO selected_dishes( order_id, menu_item_id) VALUES ( $1, $2 ) RETURNING *
-              `;
-
-              const values = [orderID, itemID];
-
               for (let i = 0; i < quantity; i++) {
-                return db.query(query, values);
+                let queryObj = {};
+                queryObj.query = `INSERT INTO selected_dishes( order_id, menu_item_id) VALUES ($1, $2)`;
+                queryObj.values = [orderID, itemID];
+                queries.push(queryObj);
               }
             }
           }
+          // Insert all generated SQL statements into db
+          console.log(pgp);
+          const sql = pgp.helpers.concat(queries);
+          console.log(sql);
+          return db.query(sql);
         })
-        .then(() => {
-          console.log("Selected dish added to order!");
-        })
+        .then(() => res.send("Order received!"))
         .catch((err) => {
           res.status(500).json({ error: err.message });
           return;
