@@ -1,8 +1,10 @@
 const getPhoneNumber = () => {
-  const phoneNumber = "";
-  while (phoneNumber.trim() === "") {
-    phoneNumber = prompt("Please enter your phone number!", "+1");
-    console.log(phoneNumber);
+  let phoneNumber = prompt("Please enter your phone number!", "+1");
+  while (phoneNumber.trim() === "" || phoneNumber === null) {
+    phoneNumber = prompt(
+      "Can't be blank! Please enter your phone number!",
+      "+1"
+    );
   }
   return phoneNumber;
 };
@@ -106,9 +108,9 @@ $(document).ready(function () {
   // send user's selected menu items to POST /orders
   $("#place-order-btn").on("click", function (e) {
     if (localStorage.getItem("order")) {
-      const phoneNumber = getPhoneNumber();
-      console.log(phoneNumber);
-      const data = JSON.parse(localStorage.getItem("order"));
+      const phoneNumber = `+${getPhoneNumber().match(/\d+/g).join("")}`;
+      const newOrder = JSON.parse(localStorage.getItem("order"));
+      const data = { ...newOrder, phoneNumber };
       $.ajax("/orders", { method: "POST", data })
         .done((res) => {
           console.log(res);
