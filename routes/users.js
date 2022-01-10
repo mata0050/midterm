@@ -17,8 +17,6 @@ module.exports = (db) => {
         if (loggedInUser) {
           // create session for a logged in user and redirect accordingly:
           req.session.user_id = userID;
-          res.cookie("user_id", userID);
-          res.cookie("user_name", "hfhfhf");
           if (loggedInUser.admin === true) {
             res.redirect("/admin/orders");
             return;
