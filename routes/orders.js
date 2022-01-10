@@ -12,7 +12,6 @@ module.exports = (db) => {
     if (userID) {
       const { phoneNumber } = req.body;
       console.log(phoneNumber);
-      console.log(req.body);
       const orderDetails = req.body;
       const query = `
       INSERT INTO orders(status, created_at, user_id ) VALUES ( $1, $2, $3 ) RETURNING *

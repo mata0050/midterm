@@ -1,11 +1,14 @@
 const getPhoneNumber = () => {
-  let phoneNumber = prompt("Please enter your phone number!", "+1");
-  while (phoneNumber.trim() === "" || phoneNumber === null) {
+  let numbers = [];
+  while (numbers.length > 11 || numbers.length < 10) {
     phoneNumber = prompt(
-      "Can't be blank! Please enter your phone number!",
+      "Please enter a valid phone number to receive SMS confirmation!",
       "+1"
     );
+    numbers = phoneNumber.match(/\d+/g) || [];
+    numbers = numbers.join("");
   }
+
   return phoneNumber;
 };
 
@@ -30,6 +33,7 @@ const addItemsToSummary = () => {
     totalPrice += price * quantity;
     totalTime += prepTime * quantity;
 
+    // create HTML elements for selected items
     const itemDetails = `
     <tr id=${itemID}>
     <td>${name}</td>
@@ -108,10 +112,7 @@ $(document).ready(function () {
   // send user's selected menu items to POST /orders
   $("#place-order-btn").on("click", function (e) {
     if (localStorage.getItem("order")) {
-      let phoneNumber = getPhoneNumber().match(/\d+/g);
-      if (phoneNumber) {
-        phoneNumber = phoneNumber.join("");
-      }
+      const phoneNumber = getPhoneNumber();
       const newOrder = JSON.parse(localStorage.getItem("order"));
       const data = { ...newOrder, phoneNumber };
       $.ajax("/orders", { method: "POST", data })
