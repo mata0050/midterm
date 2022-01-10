@@ -9,3 +9,19 @@
   margin: 1rem;
   padding: 1rem;
 }
+
+#order-summary {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 120px;
+  background-color: white;
+  border: 1px solid #fe744d;
+  border-radius: 3px;
+}
+
+#toggle-order-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}

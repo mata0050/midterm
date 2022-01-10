@@ -21,14 +21,26 @@
       <% for (item of menuItems) { %>
       <div id="<%=item.id%>" class="menu-item">
         <img src="<%= item.photo_url %>" alt="Image of <%= item.name %>" />
-        <p>Name: <%= item.name %></p>
+        <p data-name="<%= item.name %>">Name: <%= item.name %></p>
         <p><%= item.description %></p>
-        <p>Price: <%= item.price/100 %>$</p>
-        <p>Preparation time: <%= item.preparation_time %> minutes</p>
+        <p data-price="<%= item.price %>">
+          Price: <%= (item.price / 100).toFixed(2)%>$
+        </p>
+        <p data-time="<%= item.preparation_time %>">
+          Preparation time: <%= item.preparation_time %> minutes
+        </p>
+        <% if (userID) { %>
         <button class="order-btn">Add to order</button>
+        <% } %>
       </div>
       <% } %>
     </section>
-    <button id="place-order-btn">Place order</button>
+    <% if (userID) { %>
+    <button id="toggle-order-btn">My Order</button>
+    <div id="order-summary">
+      <table class="summary-details"></table>
+      <button id="place-order-btn">Place order</button>
+    </div>
+    <% } %>
   </body>
 </html>
