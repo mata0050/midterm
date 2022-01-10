@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/styles/form-styles.css" type="text/css" />
     <link rel="stylesheet" href="/styles/admin-navbar.css" type="text/css" />
     <link rel="stylesheet" href="/styles/admin-order.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/admin-menu.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
     <!-- JQuery -->
@@ -30,31 +31,35 @@
     <%- include('partials/_admin_navbar') %>
 
     <main>
-      <h1>Admin Order Dashboard</h1>
+      <h1>All Items on The Menu</h1>
 
       <table>
         <tr>
-          <th>Menu Item</th>
-          <th>Customer Name</th>
-          <th>Phone Number</th>
-          <th>Created at</th>
+          <th>Photo</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
           <th>Preparation Time</th>
-          <th>Status</th>
-          <th>Mark As Completed</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
 
         <% menuItems.map(item=>{%>
 
         <tr>
-          <td><%=item.menu_item%></td>
-          <td><%=item.customer_name %></td>
-          <td><%= item.phone_number %></td>
-          <td><%=item.created_at %></td>
+          <td><img src="<%=item.photo_url %>" alt="" /></td>
+          <td><%=item.name%></td>
+          <td id="description"><%=item.description %></td>
+          <td>$<%= (item.price / 100).toFixed(2)%></td>
           <td><%= item.preparation_time %></td>
-          <td><%= item.status %></td>
+
+          <td>
+            <button id="edit">Edit</button>
+          </td>
+
           <td>
             <form action="/orders/" method="GET">
-              <button>Completed</button>
+              <button>Delete</button>
             </form>
           </td>
         </tr>

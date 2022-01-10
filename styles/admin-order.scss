@@ -2,8 +2,6 @@ body {
   position: relative;
 }
 
-
-
 h1 {
   text-align: center;
   margin-top: 50px;
@@ -38,4 +36,14 @@ table {
     color: #fff;
     border-radius: 3px;
   }
+}
+
+
+// ---------------- Styles for all items on the menu
+#description {
+  width: 300px;
+}
+
+#edit {
+  background: black;
 }

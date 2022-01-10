@@ -95,5 +95,27 @@ module.exports = (db) => {
       });
   });
 
+  // @route    GET /admin/menu
+  // @desc     Get all the menu items
+  // @access   Private
+  router.get("/orders/menu", (req, res) => {
+    const session = req.session.user_id;
+    // add checks for user
+    db.query(`SELECT * FROM menu_items;`)
+      .then((data) => {
+        const menuItems = data.rows;
+        const templateVars = {
+          userID: session,
+          menuItems,
+        };
+        console.log(templateVars);
+        res.render("admin_menu", templateVars);
+        // res.json(menuItems);
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   return router;
 };
