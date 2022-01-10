@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 // utils
-const checkUserIsAdmin = require("../utils/checkUserIsAdmin");
 const userUndefined = require("../utils/userUndefined");
 
 module.exports = (db) => {
