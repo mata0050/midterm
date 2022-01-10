@@ -13,4 +13,11 @@
 	left:0px;
 	top:0px;
 }
-
+.feature-highlight-border {
+	border: 2px solid black;
+	width: 650px;
+	height: 522px;
+	position:absolute;
+	left:730px;
+	top:127px;
+}
