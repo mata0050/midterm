@@ -1,0 +1,51 @@
+.testimonial-container-1 {
+	width:712px;
+	height:198px;
+	position:absolute;
+	left:0px;
+	top:2779px;
+}
+.testimonial-box-1 {
+	background-color:whitesmoke;
+	width:712px;
+	height:198px;
+	position:absolute;
+}
+.testimonial-user-1 {
+	color:black;
+	width:77px;
+	height:10px;
+	position:absolute;
+	left:318px;
+	top:122px;
+	font-family:Roboto;
+	text-align:center;
+	font-size:15px;
+}
+
+.profile-picture-1 {
+	width:30px;
+	height:30px;
+	position:absolute;
+	left:346px;
+	top:92px;
+}
+.user-profile-1 {
+	width:25px;
+	height:25px;
+	position:absolute;
+	left:-4px;
+	top:7px;
+}
+
+.testimonial-comment-1 {
+	color:black;
+	width:314px;
+	height:17px;
+	position:absolute;
+	left:199px;
+	top:63px;
+	font-family:Roboto;
+	text-align:center;
+	font-size:18px;
+}
