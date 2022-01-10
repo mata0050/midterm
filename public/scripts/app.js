@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // save user's selected menu items to local storage
   $(".order-btn").on("click", function (e) {
     const order = JSON.parse(localStorage.getItem("order")) || {};
     const menuItemID = $(this).parent().attr("id");
@@ -15,6 +16,8 @@ $(document).ready(function () {
       ftColor: "black",
     });
   });
+
+  // send user's selected items to POST /orders
   $("#place-order-btn").on("click", function (e) {
     const data = JSON.parse(localStorage.getItem("order"));
     $.ajax("/orders", { method: "POST", data })
