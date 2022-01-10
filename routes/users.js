@@ -17,6 +17,8 @@ module.exports = (db) => {
         if (loggedInUser) {
           // create session for a logged in user and redirect accordingly:
           req.session.user_id = userID;
+          res.cookie("user_id", userID);
+          res.cookie("user_name", "hfhfhf");
           if (loggedInUser.admin === true) {
             res.redirect("/admin/orders");
             return;
@@ -90,6 +92,7 @@ module.exports = (db) => {
       return;
     }
 
+    console.log(req.body);
     // TO DO:
     // get all data about the order and save it in db, send SMS to user, send SMS to admin, res.redirect("/:id/orders);
     checkCurrentUser(session, userID, db).then((isCorrectUser) => {
