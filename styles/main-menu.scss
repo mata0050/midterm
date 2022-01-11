@@ -67,5 +67,13 @@ body {
 	border-top-right-radius:5px;
 	border-bottom-left-radius:5px;
 	border-bottom-right-radius:5px;
+  cursor:pointer;
+
+}
+
+.more-button:hover {
+  opacity: 0.8;
+  color: white;
+
 }
 
