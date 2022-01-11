@@ -1,0 +1,108 @@
+.footer-container {
+	width:1440px;
+	height:410px;
+	position:absolute;
+	top:240px;
+}
+.footer-box {
+	background-color:black;
+	width:1440px;
+	height:410px;
+	position:absolute;
+}
+.footer-text {
+	color:#FFFFFF;
+	width:115px;
+	height:29px;
+	position:absolute;
+	left:663px;
+	top:111px;
+	font-family:Roboto;
+	text-align:center;
+	font-size:24px;
+}
+.footer-copyright {
+	color:#FFFFFF;
+	width:46px;
+	height:20px;
+	position:absolute;
+	left:637px;
+	top:356px;
+	font-family:Roboto;
+	text-align:center;
+	font-size:14px;
+}
+.footer-terms {
+	color:#FFFFFF;
+	width:103px;
+	height:20px;
+	position:absolute;
+	left:692px;
+	top:356px;
+	font-family:Roboto;
+	text-align:center;
+	font-size:14px;
+}
+.footer-left-content {
+	width:268px;
+	height:20px;
+	position:absolute;
+	left:262px;
+	top:115px;
+}
+.footer-privacy {
+	color:#FFFFFF;
+	width:47px;
+	height:20px;
+	position:absolute;
+	font-family:Roboto;
+	text-align:left;
+	font-size:14px;
+}
+.footer-conditions {
+	color:#FFFFFF;
+	width:139px;
+	height:15px;
+	position:absolute;
+	left:129px;
+	top:2px;
+	font-family:Roboto;
+	text-align:left;
+	font-size:14px;
+}
+.footer-right-content {
+	width:282px;
+	height:20px;
+	position:absolute;
+	left:878px;
+	top:115px;
+}
+.footer-create-account {
+	color:#FFFFFF;
+	width:98px;
+	height:20px;
+	position:absolute;
+	font-family:Roboto;
+	text-align:left;
+	font-size:14px;
+}
+.footer-login {
+	color:#FFFFFF;
+	width:36px;
+	height:20px;
+	position:absolute;
+	left:129px;
+	font-family:Roboto;
+	text-align:left;
+	font-size:14px;
+}
+.footer-browse-menu {
+	color:#FFFFFF;
+	width:86px;
+	height:20px;
+	position:absolute;
+	left:196px;
+	font-family:Roboto;
+	text-align:left;
+	font-size:14px;
+}
