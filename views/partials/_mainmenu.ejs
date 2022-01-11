@@ -4,7 +4,7 @@
   <div class="all-menu-items">
     <% for (menuItem of menuItems) { %>
     <div class="menu-item-container">
-        <img class="menu-item-box" src='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-homemade-pizza-horizontal-1542312378.png?crop=1.00xw:1.00xh;0,0&resize=480:*' alt="<%=menuItem.name %>">
+        <img class="menu-item-box" src='<%=menuItem.photo_url %>' alt="<%=menuItem.name %>">
       <div class="menu-item-details">
         <span class="menu-item-text"><b><%=menuItem.name %></b></span>
         <span class="menu-item-price">
