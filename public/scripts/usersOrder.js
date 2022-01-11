@@ -1,14 +1,14 @@
 const getPhoneNumber = () => {
   let numbers = [];
-  while (numbers.length > 11 || numbers.length < 10) {
+  while (numbers !== null && (numbers.length > 11 || numbers.length < 10)) {
     phoneNumber = prompt(
       "Please enter a valid phone number to receive SMS confirmation!",
       "+1"
     );
-    numbers = phoneNumber.match(/\d+/g) || [];
+    if (!phoneNumber) return null;
+    numbers = phoneNumber.match(/\d+/g);
     numbers = numbers.join("");
   }
-
   return phoneNumber;
 };
 
@@ -111,8 +111,8 @@ $(document).ready(function () {
 
   // send user's selected menu items to POST /orders
   $("#place-order-btn").on("click", function (e) {
-    if (localStorage.getItem("order")) {
-      const userPhoneNumber = getPhoneNumber();
+    let userPhoneNumber = "";
+    if (localStorage.getItem("order") && (userPhoneNumber = getPhoneNumber())) {
       const newOrder = JSON.parse(localStorage.getItem("order"));
       const prepTime = $("#prep-time").text();
       const data = { ...newOrder, userPhoneNumber, prepTime };
