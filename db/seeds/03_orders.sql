@@ -2,9 +2,9 @@ insert into orders ( status, created_at, user_id) values ( 'active', '2021-08-29
 insert into orders ( status, created_at, user_id) values ( 'canceled', '2021-09-09 09:07:47', 5);
 insert into orders ( status, created_at, user_id) values ( 'completed', '2021-07-23 02:12:16', 3);
 insert into orders ( status, created_at, user_id) values ( 'completed', '2021-10-30 15:32:47', 7);
-insert into orders ( status, created_at, user_id) values ( 'active', '2021-07-23 11:35:15', 9);
-insert into orders ( status, created_at, user_id) values ( 'active', '2021-04-12 18:31:03', 6);
-insert into orders ( status, created_at, user_id) values ( 'active', '2021-12-03 04:17:37', 1);
+insert into orders ( status, created_at, user_id) values ( 'ready for pick up', '2021-07-23 11:35:15', 9);
+insert into orders ( status, created_at, user_id) values ( 'ready for pick up', '2021-04-12 18:31:03', 6);
+insert into orders ( status, created_at, user_id) values ( 'ready for pick up', '2021-12-03 04:17:37', 1);
 insert into orders ( status, created_at, user_id) values ( 'active', '2021-03-29 09:28:05', 2);
 insert into orders ( status, created_at, user_id) values ( 'active', '2021-04-27 23:16:48', 4);
 insert into orders ( status, created_at, user_id) values ( 'active', '2021-12-16 10:38:59', 6);
