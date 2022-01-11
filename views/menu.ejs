@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foodskip | menu</title>
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/menu.css" type="text/css" />
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/flash.js"></script>
+
+    <script type="text/javascript" src="/scripts/usersOrder.js"></script>
+  </head>
+  <body>
+    <section class="menu-items">
+      <% for (item of menuItems) { %>
+      <div id="<%=item.id%>" class="menu-item">
+        <img src="<%= item.photo_url %>" alt="Image of <%= item.name %>" />
+        <p data-name="<%= item.name %>">Name: <%= item.name %></p>
+        <p><%= item.description %></p>
+        <p data-price="<%= item.price %>">
+          Price: <%= (item.price / 100).toFixed(2)%>$
+        </p>
+        <p data-time="<%= item.preparation_time %>">
+          Preparation time: <%= item.preparation_time %> minutes
+        </p>
+        <% if (userID) { %>
+        <button class="order-btn">Add to order</button>
+        <% } %>
+      </div>
+      <% } %>
+    </section>
+    <% if (userID) { %>
+    <button id="toggle-order-btn">My Order</button>
+    <div id="order-summary">
+      <table class="summary-details"></table>
+      <button id="place-order-btn">Place order</button>
+    </div>
+    <% } %>
+  </body>
+</html>

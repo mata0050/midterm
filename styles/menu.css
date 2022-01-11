@@ -1,0 +1,31 @@
+.more-menu-items {
+	width:140px;
+	height:40px;
+	position:absolute;
+	left:1236px;
+	top:2436px;
+}
+.more-button {
+	background-color:black;
+	width:140px;
+	height:40px;
+	position:absolute;
+	left:0px;
+	top:0px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+}
+.more-text {
+	color:white;
+	width:91px;
+	height:16px;
+	position:absolute;
+	left:25px;
+	top:12px;
+	font-family:Roboto;
+	text-align:center;
+	font-size:13px;
+	letter-spacing:0;
+}

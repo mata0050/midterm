@@ -1,10 +1,3 @@
-/*
- * All routes for Users are defined here
- * Since this file is loaded in server.js into api/users,
- *   these routes are mounted onto /users
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
- */
-
 const express = require("express");
 const router = express.Router();
 
@@ -12,14 +5,19 @@ const router = express.Router();
 const checkUserIsAdmin = require("../utils/checkUserIsAdmin");
 
 module.exports = (db) => {
-  // @route    GET /admin
+  // @route    GET /menu
   // @desc     Get all the menu items
   // @access   Public
   router.get("/", (req, res) => {
+    const session = req.session.user_id;
     db.query(`SELECT * FROM menu_items;`)
       .then((data) => {
         const menuItems = data.rows;
-        res.json({ menuItems });
+        const templateVars = {
+          userID: session,
+          menuItems,
+        };
+        res.render("menu", templateVars);
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
@@ -148,7 +146,7 @@ module.exports = (db) => {
   // @desc     Delete menuitem from table
   // @access   Private
   router.delete("/", (req, res) => {
-  ``  // const userID = req.cookies["userID"];
+    ``; // const userID = req.cookies["userID"];
     const { userId, menu_item_id } = req.body;
 
     // check if user exists
