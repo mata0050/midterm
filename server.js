@@ -62,10 +62,18 @@ app.use("/menu", menuRoutes(db));
 
 app.get("/", (req, res) => {
   const session = req.session.user_id;
-  const templateVars = {
-    userID: session,
-  };
-  res.render("index", templateVars);
+  db.query(`SELECT * FROM menu_items LIMIT 4;`)
+  .then((data) => {
+    const menuItems = data.rows;
+    const templateVars = {
+      userID: session,
+      menuItems,
+    };
+    res.render("index", templateVars);
+  })
+  .catch((err) => {
+    res.status(500).json({ error: err.message });
+  });
 });
 
 // all 404 routes
