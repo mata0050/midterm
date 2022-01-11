@@ -9,6 +9,10 @@ body {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+
+.main-menu-header {
+  text-align: center;
+}
 .all-menu-items {
   display:flex;
   flex-wrap: wrap;
@@ -59,11 +63,6 @@ body {
 	background-color:black;
   width:fit-content;
   padding: 1rem 3rem;
-	// width:140px;
-	// height:40px;
-	// position:absolute;
-	// left:0px;
-	// top:0px;
 	border-top-left-radius:5px;
 	border-top-right-radius:5px;
 	border-bottom-left-radius:5px;
