@@ -1,20 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>Home Page</title>
+  <head>
+    <!-- Meta Data -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Food ordering service for one restuarant, how convenient"
+    />
+    <meta
+      name="author"
+      content="Mohamed Mohamed, Ruta Reisogu, Michael Matambo"
+    />
+    <title>FoodSkip - Online Ordering Made Easier</title>
+    <link rel="shortcut icon" type="image/png" href="../images/favicon.png" />
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
-</head>
+    <!-- Import Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap"
+    rel="stylesheet"
+  />
+    <!-- CSS Styling Sheets -->
+    <link rel="stylesheet" href="./styles/navbar.css"/>
+    <link rel="stylesheet" href="./styles/features.css" />
+    <link rel="stylesheet" href="./styles/menu.css" />
+    <link rel="stylesheet" href="./styles/rating.css"/>
+    <link rel="stylesheet" href="./styles/testimonial.css"/>
+    <link rel="stylesheet" href="./styles/call-to-action.css"/>
+    <link rel="stylesheet" href="./styles/footer.css"/>
+    <link rel="stylesheet" href="./styles/main-menu.css"/>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
 
 <body>
+  <% include ./partials/_nav.ejs %>
   <h1>Have fun! 🥔</h1>
+  <% include ./partials/_footer.ejs %>
 </body>
 
 </html>
