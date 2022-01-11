@@ -1,214 +1,81 @@
+body {
+  position: absolute;
+}
+
+.main-menu {
+  position: relative;
+  height: 100%;
+  top: 64px;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.all-menu-items {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
 .menu-item-container {
-	width:444.8471984863281px;
-	height:479px;
-	position:absolute;
-	left:160px;
-	top:971px;
+  width: 30rem;
+  padding: 1rem;
+  margin: 1rem;
 }
 .menu-item-description {
 	color:black;
-	width:338px;
-	height:28px;
-	position:absolute;
-	left:16px;
-	top:459px;
 	font-family:Work Sans;
-	text-align:center;
-	font-size:24px;
+	font-size:15px;
 }
 .menu-item-price {
 	color:black;
-	width:221px;
-	height:32.454345703125px;
-	position:absolute;
-	left:11px;
-	top:399.9691162109375px;
 	font-family:Work Sans;
 	text-align:center;
 	font-size:24px;
 }
 .menu-item-box {
 	background-color:black;
-	width:429px;
-	height:344px;
-	position:absolute;
-	left:16px;
-	border-top-left-radius:3px;
-	border-top-right-radius:3px;
-	border-bottom-left-radius:3px;
-	border-bottom-right-radius:3px;
+  max-width: 100%;
+  height: auto;
+
+}
+.menu-item-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .menu-item-text {
-	color:black;
-	width:200px;
-	height:42px;
-	position:absolute;
-	left:5px;
-	top:346px;
+  text-align: start;
+  color:black;
 	font-family:Work Sans;
-	text-align:center;
 	font-size:33px;
 }
-.menu-item-container2 {
-	width:445px;
-	height:487px;
+
+.more-menu-items {
+	width:140px;
+	height:40px;
 	position:absolute;
-	left:159px;
-	top:1812px;
+	left:1236px;
+	top:2436px;
 }
-.menu-item-description2 {
-	color:black;
-	width:338px;
-	height:28px;
-	position:absolute;
-	left:16px;
-	top:459px;
-	font-family:Work Sans;
-	text-align:center;
-	font-size:24px;
-}
-.menu-item-price2 {
-	color:black;
-	width:221px;
-	height:32px;
-	position:absolute;
-	top:405px;
-	font-family:Work Sans;
-	text-align:center;
-	font-size:24px;
-}
-.menu-item-box2 {
+.more-button {
 	background-color:black;
-	width:429px;
-	height:344px;
+	width:140px;
+	height:40px;
 	position:absolute;
-	left:16px;
-	border-top-left-radius:3px;
-	border-top-right-radius:3px;
-	border-bottom-left-radius:3px;
-	border-bottom-right-radius:3px;
+	left:0px;
+	top:0px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
 }
-
-.menu-item-text2 {
-	color:black;
-	width:200px;
-	height:42px;
+.more-text {
+	color:white;
+	width:91px;
+	height:16px;
 	position:absolute;
-	left:16px;
-	top:351px;
-	font-family:Work Sans;
+	left:25px;
+	top:12px;
+	font-family:Roboto;
 	text-align:center;
-	font-size:36px;
-}
-.menu-item-container3 {
-	width:444.8471984863281px;
-	height:487px;
-	position:absolute;
-	left:832px;
-	top:1820px;
-}
-.menu-item-description3 {
-	color:black;
-	width:338px;
-	height:28px;
-	position:absolute;
-	left:16px;
-	top:459px;
-	font-family:Work Sans;
-	text-align:center;
-	font-size:24px;
-}
-.menu-item-price3 {
-	color:black;
-	width:221px;
-	height:32px;
-	position:absolute;
-	top:404px;
-	font-family:Work Sans;
-	text-align:center;
-	font-size:24px;
-}
-.menu-item-box3 {
-	background-color:black;
-	width:428.8471984863281px;
-	height:344px;
-	position:absolute;
-	left:16px;
-	border-top-left-radius:3px;
-	border-top-right-radius:3px;
-	border-bottom-left-radius:3px;
-	border-bottom-right-radius:3px;
-}
-
-.menu-item-text3 {
-	color:black;
-	width:200px;
-	height:42px;
-	position:absolute;
-	left:16px;
-	top:351px;
-	font-family:Work Sans;
-	text-align:center;
-	font-size:36px;
-}
-.menu-item-container4 {
-  width:445px;
-	height:487px;
-	position:absolute;
-	left:832px;
-	top:971px;
-}
-.menu-item-description4 {
-  color:black;
-	width:338px;
-	height:28px;
-	position:absolute;
-	left:16px;
-	top:459px;
-	font-family:Work Sans;
-	text-align:center;
-	font-size:24px;
-}
-.menu-item-price4 {
-  color:black;
-	width:221px;
-	height:32px;
-	position:absolute;
-	top:408px;
-	font-family:Work Sans;
-	text-align:center;
-	font-size:24px;
-}
-.menu-item-box4 {
-  background-color:black;
-	width:429px;
-	height:344px;
-	position:absolute;
-	left:16px;
-	border-top-left-radius:3px;
-	border-top-right-radius:3px;
-	border-bottom-left-radius:3px;
-	border-bottom-right-radius:3px;
-}
-
-.menu-item-text4 {
-  color:rgba(0, 0, 0, 1);
-	width:200px;
-	height:42px;
-	position:absolute;
-	left:16px;
-	top:354px;
-	font-family:Work Sans;
-	text-align:center;
-	font-size:36px;
-}
-
-.main-menu-header {
-	color:black;
-	position:absolute;
-	left:318px;
-	top:770px;
-	font-family:Work Sans;
-	text-align:center;
-	font-size:62px;
+	font-size:13px;
+	letter-spacing:0;
 }
