@@ -14,7 +14,6 @@ module.exports = (db) => {
     // only proceed with order if user is logged in
     if (userID) {
       const { userPhoneNumber, prepTime } = req.body;
-      console.log(userPhoneNumber);
       let adminPhoneNumber = "";
       let orderID = "";
 
@@ -28,23 +27,18 @@ module.exports = (db) => {
         .query(query, values)
         .then((data) => {
           adminPhoneNumber = data.rows[0].phone_number;
-        })
-        .then(() => {
           // create new order
           const query = `
-            INSERT INTO orders(status, created_at, user_id ) VALUES ( $1, $2, $3 ) RETURNING *
-            `;
+           INSERT INTO orders(status, created_at, user_id ) VALUES ( $1, $2, $3 ) RETURNING *
+           `;
           const dateTime = new Date();
           const values = ["active", dateTime.toISOString(), userID];
           return db.query(query, values);
         })
-
         .then((data) => {
+          // create queries for all selected items according to the quantity of each item
           const order = data.rows[0];
           orderID = order.id;
-        })
-        .then(() => {
-          // create queries for all selected items according to the quantity of each item
           const orderDetails = req.body;
           let queries = [];
           for (const itemID in orderDetails) {
@@ -63,7 +57,7 @@ module.exports = (db) => {
           return db.query(sql);
         })
         .then(() => {
-          //query for details to send to the restaurant
+          //query for details to send to the restaurant admin
           const query = `
             SELECT order_id, name AS dish,
             COUNT(menu_item_id) AS quantity
@@ -91,7 +85,7 @@ module.exports = (db) => {
           });
         })
         .then(() => {
-          // send order confirmation sms to user
+          // send order confirmation SMS to user
           const sms = `Thank you for ordering at FoodSkip! Your order number is ${orderID}. Approximate waiting time: ${prepTime}. We will send you another message when your order is ready for pickup!`;
           return client.messages.create({
             to: userPhoneNumber,
