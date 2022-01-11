@@ -66,7 +66,7 @@ const addItemsToSummary = () => {
     <td>Total:</td>
     <td>${totalQuantity}</td>
     <td>${(totalPrice / 100).toFixed(2)}</td>
-    <td>${Math.floor(totalTime / 60)}h ${
+    <td id="prep-time">${Math.floor(totalTime / 60)}h ${
     totalTime - 60 * Math.floor(totalTime / 60)
   } min</td>
     </tr>
@@ -112,9 +112,10 @@ $(document).ready(function () {
   // send user's selected menu items to POST /orders
   $("#place-order-btn").on("click", function (e) {
     if (localStorage.getItem("order")) {
-      const phoneNumber = getPhoneNumber();
+      const userPhoneNumber = getPhoneNumber();
       const newOrder = JSON.parse(localStorage.getItem("order"));
-      const data = { ...newOrder, phoneNumber };
+      const prepTime = $("#prep-time").text();
+      const data = { ...newOrder, userPhoneNumber, prepTime };
       $.ajax("/orders", { method: "POST", data })
         .done((res) => {
           console.log(res);
