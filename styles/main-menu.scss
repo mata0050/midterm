@@ -1,0 +1,79 @@
+body {
+  position: absolute;
+}
+
+.main-menu {
+  position: relative;
+  height: 100%;
+  top: 64px;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.main-menu-header {
+  text-align: center;
+}
+.all-menu-items {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.menu-item-container {
+  width: 30rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+.menu-item-description {
+	color:black;
+	font-family:Work Sans;
+	font-size:15px;
+}
+.menu-item-price {
+	color:black;
+	font-family:Work Sans;
+	text-align:center;
+	font-size:24px;
+}
+.menu-item-box {
+	background-color:black;
+  max-width: 100%;
+  height: auto;
+
+}
+.menu-item-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.menu-item-text {
+  text-align: start;
+  color:black;
+	font-family:Work Sans;
+	font-size:33px;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2rem;
+}
+
+.more-button {
+  color: white;
+	background-color:black;
+  width:fit-content;
+  padding: 1rem 3rem;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+  cursor:pointer;
+
+}
+
+.more-button:hover {
+  opacity: 0.8;
+  color: white;
+
+}
+
