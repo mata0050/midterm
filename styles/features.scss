@@ -1,81 +1,63 @@
 .feature-container {
-	width:1440px;
-	height:700px;
-	position:absolute;
-	left:0px;
-	top:64px;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  padding: 2rem;
+  padding-top: 5rem;
+  background-color: #fe724c;
 }
-.feature-body {
-	background-color:#FE724C;
-	width:1440px;
-	height:700px;
-	position:absolute;
-	left:0px;
-	top:0px;
+
+.feature-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0rem 3rem;
 }
-.feature-highlight-border {
-	width: 650px;
-	height: 522px;
-	position:absolute;
-	left:730px;
-	top:127px;
+
+.feature-photo-box {
+  display: flex;
+  padding-right: 3rem;
+}
+
+.feature-photo {
+  max-width: 100%;
+  height: auto;
 }
 
 .feature-paragraph {
-	color:black;
-	width:422px;
-	height:85px;
-	position:absolute;
-	left: 145px;
-	top:376px;
-	font-family:Roboto;
-	text-align:left;
-	font-size:20px;
-	letter-spacing:0;
+  color: black;
+  font-family: Roboto;
+  text-align: left;
+  font-size: 20px;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  padding-right: 4rem;
 }
 
 .feature-header {
-	color:black;
-	width:399px;
-	height:132px;
-	position:absolute;
-	left:145px;
-	top:155px;
-	font-family:Roboto;
-	text-align:left;
-	font-size:56px;
-	letter-spacing:0;
-}
-
-.browser-menu {
-	width:200px;
-	height:60px;
-	position:absolute;
-	left:0px;
-	top:297px;
+  color: black;
+  font-family: Roboto;
+  font-size: 56px;
+  display: flex;
+  flex-direction: column;
 }
 
 .browser-menu-button {
-	background-color:rgba(0, 0, 0, 1);
-	width:200px;
-	height:60px;
-	position:absolute;
-	left:145px;
-	top:190px;
-	border-top-left-radius:5px;
-	border-top-right-radius:5px;
-	border-bottom-left-radius:5px;
-	border-bottom-right-radius:5px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 5px;
+  color: white;
+  width: fit-content;
+  padding: 1rem;
 }
-.browser-menu-text {
-	color:rgba(255, 255, 255, 1);
-	width:151px;
-	height:22px;
-	position:absolute;
-	left:170px;
-	top:208px;
-	font-family:Roboto;
-	text-align:center;
-	font-size:18px;
-	letter-spacing:0;
+
+.browser-menu-button:hover {
+  background-color: rgb(51, 51, 51);
+  color: white;
+}
+
+.browser-menu-button:focus-visible,
+.browser-menu-button:active {
+  box-shadow: 0 0 0 0.2rem #131313;
+  -webkit-box-shadow: 0 0 0 0.2rem #131313;
 }
