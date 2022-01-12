@@ -33,6 +33,7 @@ module.exports = (db) => {
 
   // -- show user's orders: -- //
   router.get("/:id/orders", (req, res) => {
+    console.log("HELLO");
     const session = req.session.user_id;
     const userID = req.params.id;
     if (isNaN(userID)) {
@@ -73,7 +74,7 @@ module.exports = (db) => {
               orders,
             };
             console.log(templateVars);
-            res.render("userOrders", templateVars);
+            res.render("user_orders", templateVars);
             return;
           })
           .catch((err) => {

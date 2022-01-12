@@ -1,6 +1,8 @@
 <nav class="nav-bar-container">
   <div class="browse-menu">
-    <a class="browse-menu-text" href="/menu" style="text-decoration: none">Browse Menu</a>
+    <a class="browse-menu-text" href="/menu" style="text-decoration: none"
+      >Browse Menu</a
+    >
   </div>
   <a class="foodskip" href="/" style="text-decoration: none">
     <span class="foodskip-text">FOODSKIP</span>
@@ -10,11 +12,18 @@
   </a>
   <div class="nav-bar-buttons">
     <% if (userID) { %>
-      <a class="create-account-text" href="/<%= userID %>/orders" style="text-decoration: none">My Orders</a>
-      <a class="login-text" href='/logout' style="text-decoration: none">Logout</a>
+    <a
+      class="create-account-text"
+      href="/users/<%= userID %>/orders"
+      style="text-decoration: none"
+      >My Orders</a
+    >
+    <a class="login-text" href="/logout" style="text-decoration: none"
+      >Logout</a
+    >
     <% } else { %>
-      <span class="create-account-text">Create Account</span>
-      <span class="login-text">Login</span>
+    <span class="create-account-text">Create Account</span>
+    <span class="login-text">Login</span>
     <% } %>
   </div>
 </nav>
