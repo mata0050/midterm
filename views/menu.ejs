@@ -26,7 +26,7 @@
             ><%= item.name %></span
           >
           <span class="menu-item-price-tag" data-price="<%= item.price %>">
-            <%= (item.price / 100).toFixed(2)%>$
+            $<%= (item.price / 100).toFixed(2)%>
           </span>
           <p><%= item.description %></p>
           <p data-time="<%= item.preparation_time %>">

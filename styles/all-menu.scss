@@ -38,10 +38,19 @@
 .order-btn {
   cursor: pointer;
   padding: 0.25rem 0.5rem;
-  border: 1px solid #e66744;
+  border: 1px solid #b3b1b1;
   outline: none;
   border-radius: 2px;
-  background-color: #fe724d;
+}
+
+.order-btn:hover {
+  background-color: #dfdfdd;
+}
+
+.order-btn:focus-visible,
+.order-btn:active {
+  box-shadow: 0 0 0 0.1rem #c0c0c0;
+  -webkit-box-shadow: 0 0 0 0.1rem #c0c0c0;
 }
 
 #order-summary {
@@ -55,6 +64,8 @@
 }
 
 #toggle-order-btn {
+  -webkit-box-shadow: 4px 3px 16px -10px #000000;
+  box-shadow: 4px 3px 16px -10px #000000;
   position: fixed;
   bottom: 20px;
   left: 20px;
