@@ -53,20 +53,6 @@
   -webkit-box-shadow: 0 0 0 0.1rem #c0c0c0;
 }
 
-#order-summary {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  left: 125px;
-  background-color: white;
-  border: 1px solid #c9c7c7;
-  border-radius: 3px;
-}
-
-.summary-details {
-  padding: 1rem;
-}
-
 #toggle-order-btn {
   -webkit-box-shadow: 4px 3px 16px -10px #000000;
   box-shadow: 4px 3px 16px -10px #000000;
@@ -91,6 +77,42 @@
   -webkit-box-shadow: 0 0 0 0.05rem #3f3f3f;
 }
 
+// order summary table
+
+#order-summary {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 125px;
+  background-color: white;
+  border: 1px solid #c9c7c7;
+  border-radius: 3px;
+}
+
+.summary-details {
+  padding: 1rem;
+}
+
+.table-head th {
+  text-align: start;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+#order-summary td {
+  padding-right: 1rem;
+  padding-bottom: 0.25rem;
+}
+
 .item-remove-btn {
   cursor: pointer;
 }
@@ -100,7 +122,8 @@
 }
 
 #place-order-btn {
-  margin: 1rem;
+  display: block;
+  margin: 0 auto 1.5rem;
   cursor: pointer;
   padding: 0.25rem 0.5rem;
   border: 1px solid #881e01;

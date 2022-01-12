@@ -46,8 +46,8 @@ const addItemsToSummary = () => {
     const itemDetails = `
     <tr id=${itemID}>
     <td>${name}</td>
-    <td>${quantity}</td>
-    <td>${(price / 100).toFixed(2)}</td>
+    <td class="text-center">${quantity}</td>
+    <td>$${(price / 100).toFixed(2)}</td>
     <td></td>
     <td class="item-remove-btn">❌</td>
     </tr>
@@ -61,23 +61,24 @@ const addItemsToSummary = () => {
   }
 
   const tableHead = `
-  <tr>
+  <tr class="table-head">
   <th>Menu Item</th>
   <th>Quantity</th>
   <th>Price</th>
   <th>Total prep time</th>
+  <th></th>
   </tr>
   `;
   $(".summary-details").prepend(tableHead);
 
   const total = `
     <tr id="total">
-    <td>Total:</td>
-    <td>${totalQuantity}</td>
-    <td>${(totalPrice / 100).toFixed(2)}</td>
-    <td id="prep-time">${Math.floor(totalTime / 60)}h ${
-    totalTime - 60 * Math.floor(totalTime / 60)
-  } min</td>
+    <td class="text-bold">Total:</td>
+    <td class="text-center text-bold">${totalQuantity}</td>
+    <td class="text-bold">$${(totalPrice / 100).toFixed(2)}</td>
+    <td class="text-center text-bold" id="prep-time">${Math.floor(
+      totalTime / 60
+    )}h ${totalTime - 60 * Math.floor(totalTime / 60)} min</td>
     </tr>
   `;
   $(".summary-details").append(total);
