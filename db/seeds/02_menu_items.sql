@@ -9,22 +9,13 @@ insert into menu_items ( name, description, price, photo_url, preparation_time) 
 insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Tortellini', 'Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.', '1470', 'https://cdn.pixabay.com/photo/2018/02/07/18/17/tortellini-3137649_960_720.jpg', '20');
 insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Chicken kaboob', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '2130', 'https://cdn.pixabay.com/photo/2021/10/10/18/11/chicken-kabob-6697958_960_720.jpg', '30');
 insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Greek Salad', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '1130', 'https://cdn.pixabay.com/photo/2021/01/10/04/37/salad-5904093_960_720.jpg', '15');
-<<<<<<< HEAD
-insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Caesar Salad', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '1200', 'https://cdn.pixabay.com/photo/2016/08/30/00/02/caesar-salad-1629534_960_720.jpg', '15');
-=======
 insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Caesar Salad', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '1200', 'https://cdn.pixabay.com/photo/2017/06/29/20/09/mexican-2456038_960_720.jpg', '15');
->>>>>>> master
 insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Tacos', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '1200', 'https://cdn.pixabay.com/photo/2016/08/23/08/53/tacos-1613795_960_720.jpg', '20');
 insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Buritto', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '1000', 'https://cdn.pixabay.com/photo/2017/06/29/20/09/mexican-2456038_960_720.jpg', '25');
 insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Scallops', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '2550', 'https://cdn.pixabay.com/photo/2019/12/20/21/29/scallops-4709349_960_720.jpg', '30');
 insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Meatballs', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '1550', 'https://cdn.pixabay.com/photo/2019/09/28/21/04/meatballs-4511773_960_720.jpg', '35');
 insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Chocolate Cake', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '900', 'https://cdn.pixabay.com/photo/2017/10/16/09/02/cake-2856551_960_720.jpg', '15');
 insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Cheesecake', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '900', 'https://cdn.pixabay.com/photo/2018/06/06/15/06/cheesecake-3458117_960_720.jpg', '15');
-<<<<<<< HEAD
-insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Tiramisu', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '900', 'https://cdn.pixabay.com/photo/2021/04/12/10/42/tiramisu-6172170_960_720.jpg', '15');
-insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Churros', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '900', 'https://cdn.pixabay.com/photo/2017/03/30/15/47/churros-2188871_960_720.jpg', '15');
-=======
 insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Cheesecake', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '900', 'https://cdn.pixabay.com/photo/2021/04/12/10/42/tiramisu-6172170_960_720.jpg', '15');
 insert into menu_items ( name, description, price, photo_url, preparation_time) values ( 'Churros', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '900', 'https://cdn.pixabay.com/photo/2017/03/30/15/47/churros-2188871_960_720.jpg', '15');
 
->>>>>>> master
