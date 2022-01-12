@@ -90,7 +90,7 @@ const addItemsToSummary = () => {
       localStorage.setItem("order", JSON.stringify(items));
     }
     flash("Menu item removed!", {
-      bgColor: "#aa714a",
+      bgColor: "#fe744d",
       ftColor: "black",
     });
     addItemsToSummary();
@@ -113,7 +113,7 @@ $(document).ready(function () {
     localStorage.setItem("order", JSON.stringify(order));
     addItemsToSummary();
     flash("Menu item added to order!", {
-      bgColor: "#fe744d",
+      bgColor: "#ffc529",
       ftColor: "black",
     });
   });
