@@ -1,0 +1,23 @@
+<!-- Main Menu Section -->
+<section class="main-menu">
+  <h2 class="main-menu-header">BROWSE OUR FRESH MENU!</h2>
+  <div class="all-menu-items">
+    <% for (menuItem of menuItems) { %>
+    <div class="menu-item-container">
+        <img class="menu-item-box" src='<%=menuItem.photo_url %>' alt="<%=menuItem.name %>">
+      <div class="menu-item-details">
+        <span class="menu-item-text"><b><%=menuItem.name %></b></span>
+        <span class="menu-item-price">
+          $<%=(menuItem.price /100).toFixed(2) %></span
+        >
+        <span class="menu-item-description"><%= menuItem.description %></span>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+<div class="button">
+  <a class="more-button" href="/menu" style="text-decoration: none;">More</a>
+  </div>
+    <!-- <span class="more-text">More</span> -->
+</section>

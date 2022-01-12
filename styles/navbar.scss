@@ -1,0 +1,77 @@
+.nav-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0em 1em;
+  background-color:#ffc529;
+	width:100vw;
+	height:64px;
+	position:fixed;
+  // top: 0;
+  z-index: 99;
+  font-family: Roboto;
+  color: black;
+}
+
+.browse-menu-text {
+  color: black;
+}
+
+.browse-menu-text:hover {
+  color: rgb(88, 85, 85);
+}
+
+
+.foodskip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+	// width:147px;
+	// height:29px;
+	// position:relative;
+	// left:663px;
+	// top:18px;
+}
+
+.nav-bar-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-account-text {
+  background-color: black;
+  border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+  padding: 0.5rem 1rem;
+  color: white;
+}
+
+.foodskip-text {
+	color:black;
+
+	font-family:Roboto;
+	text-align:center;
+	font-size:24px;
+}
+.logo {
+	width:26px;
+	height:26px;
+	// position:relative;
+	// left:121px;
+	// top:3px;
+}
+
+.login-text {
+  background-color: #ffc529;
+  border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+  border: solid 1px;
+  padding: 0.5rem 1rem;
+  color: black;
+  margin: 0 1rem;
+}

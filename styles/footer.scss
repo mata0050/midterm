@@ -1,0 +1,78 @@
+.footer-container {
+	width:100vw;
+}
+.footer-box {
+  padding: 2rem 0;
+	background-color:black;
+
+
+}
+.footer-top {
+  display:flex;
+  justify-content: space-evenly;
+}
+.footer-left-content {
+display:flex;
+justify-content: space-around;
+align-items: center;
+}
+.footer-privacy {
+  color:#FFFFFF;
+  padding: 0 1rem;
+  font-family:Roboto;
+  font-size:14px;
+}
+.footer-conditions {
+  color:#FFFFFF;
+  font-family:Roboto;
+  font-size:14px;
+}
+.footer-text {
+	color:#FFFFFF;
+	font-family:Roboto;
+	text-align:center;
+	font-size:24px;
+}
+.footer-right-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.footer-create-account {
+  color:#FFFFFF;
+  padding: 0 1rem;
+	font-family:Roboto;
+	font-size:14px;
+}
+.footer-login {
+  color:#FFFFFF;
+  padding: 0 1rem;
+	font-family:Roboto;
+	font-size:14px;
+}
+.footer-browse-menu {
+  color:#FFFFFF;
+  padding: 0 1rem;
+	font-family:Roboto;
+	font-size:14px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.footer-copyright {
+  color:#FFFFFF;
+  padding: 0 1rem;
+  font-family:Roboto;
+  text-align:center;
+  font-size:14px;
+}
+.footer-terms {
+  color:#FFFFFF;
+  font-family:Roboto;
+  text-align:center;
+  font-size:14px;
+}
