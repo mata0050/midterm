@@ -5,8 +5,8 @@ const getPhoneNumber = () => {
       "Please enter a valid phone number to receive SMS confirmation!",
       "+1"
     );
-    if (!phoneNumber) return null;
-    numbers = phoneNumber.match(/\d+/g);
+    if (phoneNumber === null) return null;
+    numbers = phoneNumber.match(/\d+/g) || [];
     numbers = numbers.join("");
   }
   return phoneNumber;
@@ -24,10 +24,19 @@ const addItemsToSummary = () => {
   const items = JSON.parse(localStorage.getItem("order"));
   for (let itemID in items) {
     const menuItem = $("body").find(`#${itemID}`);
-    const name = menuItem.children("[data-name]").attr("data-name");
+    const name = menuItem
+      .children(".menu-item-info")
+      .children("[data-name]")
+      .attr("data-name");
     const quantity = items[itemID];
-    const price = menuItem.children("[data-price]").attr("data-price");
-    const prepTime = menuItem.children("[data-time]").attr("data-time");
+    const price = menuItem
+      .children(".menu-item-info")
+      .children("[data-price]")
+      .attr("data-price");
+    const prepTime = menuItem
+      .children(".menu-item-info")
+      .children("[data-time]")
+      .attr("data-time");
 
     totalQuantity += Number(quantity);
     totalPrice += price * quantity;
@@ -94,7 +103,7 @@ $(document).ready(function () {
   // save user's selected menu items to local storage
   $(".order-btn").on("click", function (e) {
     const order = JSON.parse(localStorage.getItem("order")) || {};
-    const menuItemID = $(this).parent().attr("id");
+    const menuItemID = $(this).parent().parent().attr("id");
     let amount = order[menuItemID] || 0;
     amount = Number(amount) + 1;
     amount = JSON.stringify(amount);
@@ -143,7 +152,7 @@ $(document).ready(function () {
       {
         height: "toggle",
       },
-      600
+      500
     );
   });
 });
