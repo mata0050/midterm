@@ -62,6 +62,10 @@ app.use("/menu", menuRoutes(db));
 
 app.get("/", (req, res) => {
   const session = req.session.user_id;
+  if(session) {
+    res.redirect("/menu");
+    return;
+  }
   db.query(`SELECT * FROM menu_items LIMIT 9;`)
   .then((data) => {
     const menuItems = data.rows;
