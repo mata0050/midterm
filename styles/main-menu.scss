@@ -75,3 +75,8 @@ body {
 
 }
 
+.more-button:focus-visible,
+.more-button:active {
+  box-shadow: 0 0 0 0.2rem #131313;
+  -webkit-box-shadow: 0 0 0 0.2rem #131313;
+}
