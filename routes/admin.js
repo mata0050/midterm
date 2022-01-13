@@ -122,6 +122,7 @@ module.exports = (db) => {
   // @desc     Mark order as complete status
   // @access   Private
   router.put("/orders/:order_id", (req, res) => {
+    console.log("IM HERE", req.body);
     const { order_id } = req.params;
     const { status } = req.body;
     const session = req.session.user_id;

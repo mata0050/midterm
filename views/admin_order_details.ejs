@@ -44,7 +44,7 @@
           <strong>Order time:</strong> <%= order.time_ordered.toLocaleString()%>
         </p>
         <p>
-          <strong>Order price:</strong> $<%= (order.total_price /
+          <strong>Total price:</strong> $<%= (order.total_price /
           100).toFixed(2)%>
         </p>
         <% if (order.waiting_time > 100) { %>
@@ -72,6 +72,22 @@
             <% } %>
           </tbody>
         </table>
+        <div class="status-update">
+          <form
+            method="POST"
+            action="/admin/orders/<%=order.order_nr%>?_method=PUT"
+          >
+            <label for="status-options"><h4>Update Status:</h4></label>
+
+            <select name="status-update" id="status-options">
+              <option value="active">active</option>
+              <option value="ready for pick up">ready for pick-up</option>
+              <option value="completed">completed</option>
+              <option value="audi">canceled</option>
+            </select>
+            <button type="submit" class="btn btn-sm btn-warning">Save</button>
+          </form>
+        </div>
       </div>
       <%- include('partials/_create_item_form') %>
     </main>

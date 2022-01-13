@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
 const cookieSession = require("cookie-session");
 const express = require("express");
+const methodOverride = require("method-override");
 const app = express();
 const morgan = require("morgan");
 
@@ -27,6 +28,7 @@ app.use(
   })
 );
 app.use(morgan("dev"));
+app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
