@@ -35,7 +35,7 @@ Restaurant:
 ## Project Screenshots
 
 <p align="center">
-  <img src ="./public/images/order-summary.png" width="600"></p>
+  <img src ="./public/images/order-summary.png" width="700"></p>
  <p align="center">
   <img src="./public/images/tiramisu.png" width="300">
   <img src="./public/images/new-menu-item.png" width="300">
