@@ -23,26 +23,24 @@
   font-size: 20px;
   font-weight: lighter;
 }
-.cta-menu {
-  color: white;
+
+.cta-menu-text {
   background-color: black;
-  width: fit-content;
-  padding: 2rem 3rem;
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 18px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   cursor: pointer;
-}
-.cta-menu-text {
-  color: #ffffff;
-  font-family: Roboto;
-  font-size: 18px;
+  width: fit-content;
+  padding: 2rem 3rem;
 }
 
-.cta-menu:hover {
+.cta-menu-text:hover {
   opacity: 0.8;
-  background-color: black;
+  background-color: rgb(70, 62, 62);
   color: white;
 }
 
