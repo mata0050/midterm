@@ -31,7 +31,6 @@ module.exports = (db) => {
             `SELECT orders.id, status, created_at, users.name as customer_name, users.phone_number
          FROM orders
          JOIN users ON orders.user_id = users.id
-         WHERE status = 'active'
        ORDER BY created_at DESC;`
           );
         }

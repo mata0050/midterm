@@ -41,9 +41,9 @@
       <table class="table">
         <tr>
           <th>Order id</th>
+          <th>Created at</th>
           <th>Customer Name</th>
           <th>Phone Number</th>
-          <th>Created at</th>
           <th>Status</th>
           <th></th>
         </tr>
@@ -52,10 +52,20 @@
 
         <tr>
           <td><%=order.id%></td>
+          <td><%=order.created_at.toLocaleString() %></td>
           <td><%=order.customer_name %></td>
           <td><%= order.phone_number %></td>
-          <td><%=order.created_at.toLocaleString() %></td>
-          <td><%= order.status %></td>
+          <% if (order.status === 'active') { %>
+          <td style="color: blue;"><%= order.status %></td>
+
+          <% } else if (order.status === 'completed') { %>
+          <td style="color: darkgray;"><%= order.status %></td>
+          <% } else if (order.status === 'ready for pick up') { %>
+          <td style="color: darkgreen;"><%= order.status %></td>
+
+          <% } else { %>
+          <td style="color: red;"><%= order.status %></td>
+          <% } %>
           <td>
             <a href="/admin/orders/<%=order.id%>">Details</a>
           </td>
