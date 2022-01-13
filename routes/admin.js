@@ -201,7 +201,7 @@ module.exports = (db) => {
   // @route    GET /admin/menu
   // @desc     Get all the menu items
   // @access   Private
-  router.get("/orders/menu", (req, res) => {
+  router.get("/menu", (req, res) => {
     const session = req.session.user_id;
     // add checks for user
     db.query(`SELECT * FROM menu_items;`)
