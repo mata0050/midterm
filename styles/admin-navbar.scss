@@ -1,10 +1,13 @@
 nav {
   background: #fe724c;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
 
   ul {
     display: flex;
+    justify-content: center;
     margin: 0 auto;
-    width: 800px;
     align-items: center;
     height: 45px;
   }
@@ -26,3 +29,20 @@ nav {
     }
   }
 }
+
+
+
+
+
+.logout-text {
+  background-color: black;
+  border-radius: 5px;
+  padding: 0.7rem;
+  margin-right: 1rem;
+  color: white;
+}
+
+.logout-text:hover {
+  color: rgb(163, 149, 149);
+}
+
