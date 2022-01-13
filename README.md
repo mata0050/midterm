@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-<img src="./public/images/feature-photo.jpeg" alt="A person holding paper baggs with with food made ready for pick-up" width="200">
+<img src="./public/images/logo-inverted.png" alt="foodskip logo" width="200">
   <br>
   FOODSKIP
 </h1>
@@ -70,9 +70,10 @@ Follow these steps after setting up a local PostgreSQL database:
 - pg-promise
 - sass
 - twilio
+- method-override
 
 ## Future Improvements
 
 - Registration and login
-- User profile page
-- Cancelling order
+- Users profile page
+- Cancelling orders
