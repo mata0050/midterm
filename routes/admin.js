@@ -20,33 +20,32 @@ module.exports = (db) => {
     db.query(queryString, [session])
       .then((data) => {
         const user = data.rows;
+        console.log(user);
         if (user.length !== 0) {
           // All active orders
-          db.query(
-            `SELECT orders.id, status, created_at as dateTime, users.name as customer_name, users.phone_number, menu_items.name as menu_item
-        ,menu_items.preparation_time, cast(created_at as time)
+          return db.query(
+            `SELECT orders.id, status, created_at, users.name as customer_name, users.phone_number
          FROM orders
          JOIN users ON orders.user_id = users.id
-         JOIN selected_dishes ON selected_dishes.order_id = orders.user_id
-         JOIN menu_items ON menu_items.id = selected_dishes.menu_item_id
          WHERE status = 'active'
-       ORDER BY dateTime DESC;`
-          )
-            .then((data) => {
-              const menuItems = data.rows;
-              const templateVars = {
-                userID: session,
-                menuItems: menuItems,
-              };
-              res.render("admin_orders", templateVars);
-            })
-            .catch((err) => {
-              res.status(500).json({ error: err.message });
-            });
+       ORDER BY created_at DESC;`
+          );
         }
+        res.redirect("/menu");
+        return;
+      })
+      .then((data) => {
+        const orders = data.rows;
+        const templateVars = {
+          userID: session,
+          orders,
+        };
+        res.render("admin_orders", templateVars);
+        return;
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
+        return;
       });
   });
 

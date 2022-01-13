@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Page</title>
 
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <!-- font awesome -->
     <link
       rel="stylesheet"
@@ -29,39 +35,35 @@
   <body>
     <%- include('partials/_admin_navbar') %>
 
-    <main>
+    <main class="m-5 px-5">
       <h1>Admin Order Dashboard</h1>
 
-      <table>
+      <table class="table">
         <tr>
-          <th>Menu Item</th>
+          <th>Order id</th>
           <th>Customer Name</th>
           <th>Phone Number</th>
           <th>Created at</th>
-          <th>Preparation Time</th>
           <th>Status</th>
-          <th>Mark As Completed</th>
+          <th></th>
         </tr>
 
-        <% menuItems.map(item=>{%>
+        <% orders.map(order=>{%>
 
         <tr>
-          <td><%=item.menu_item%></td>
-          <td><%=item.customer_name %></td>
-          <td><%= item.phone_number %></td>
-          <td><%=item.created_at %></td>
-          <td><%= item.preparation_time %></td>
-          <td><%= item.status %></td>
+          <td><%=order.id%></td>
+          <td><%=order.customer_name %></td>
+          <td><%= order.phone_number %></td>
+          <td><%=order.created_at.toLocaleString() %></td>
+          <td><%= order.status %></td>
           <td>
-            <form action="/orders/" method="GET">
-              <button>Completed</button>
-            </form>
+            <a href="/admin/orders/<%=order.id%>">Details</a>
           </td>
         </tr>
 
         <%})%>
       </table>
-      <!-- create new menu item form -->
+      <!-- create new item order form -->
       <%- include('partials/_create_item_form') %>
     </main>
   </body>
