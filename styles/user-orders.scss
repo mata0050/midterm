@@ -1,0 +1,23 @@
+.my-orders {
+  width: fit-content;
+  margin: 0 auto;
+  height: 100vh;
+  padding: 6rem 3rem 0 3rem;
+  font-size: 1.125rem;
+}
+
+.customer-orders th {
+  text-align: start;
+  padding-right: 1.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.customer-orders td {
+  padding-right: 1.75rem;
+  padding-bottom: 0.5rem;
+}
+
+.customer-orders:last-child {
+  border-bottom: 1px solid #ddd;
+}

@@ -33,7 +33,6 @@ module.exports = (db) => {
 
   // -- show user's orders: -- //
   router.get("/:id/orders", (req, res) => {
-    console.log("HELLO");
     const session = req.session.user_id;
     const userID = req.params.id;
     if (isNaN(userID)) {
@@ -56,14 +55,10 @@ module.exports = (db) => {
         JOIN selected_dishes ON orders.id = order_id
         JOIN menu_items ON menu_items.id = menu_item_id
         WHERE user_id = $1
-        GROUP BY orders.id;
+        GROUP BY orders.id
+        ORDER BY orders.created_at DESC;
         `;
         const values = [userID];
-
-        // check this in views!
-        // if (totalTime > 100) {
-        //   totalTime = 110;
-        // }
         return db
           .query(query, values)
           .then((data) => {
