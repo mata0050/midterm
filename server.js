@@ -65,35 +65,35 @@ app.use("/logout", logoutRoute());
 
 app.get("/", (req, res) => {
   const session = req.session.user_id;
-  if(session) {
+  if (session) {
     res.redirect("/menu");
     return;
   }
   db.query(`SELECT * FROM menu_items LIMIT 9;`)
-  .then((data) => {
-    const menuItems = data.rows;
-    const templateVars = {
-      userID: session,
-      menuItems,
-    };
-    res.render("index", templateVars);
-  })
-  .catch((err) => {
-    res.status(500).json({ error: err.message });
-  });
+    .then((data) => {
+      const menuItems = data.rows;
+      const templateVars = {
+        userID: session,
+        menuItems,
+      };
+      res.render("index", templateVars);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
 });
 
 // all 404 routes
-// app.get("*", (req, res) => {
-//   const session = req.session.user_id;
+app.get("*", (req, res) => {
+  const session = req.session.user_id;
 
-//   // if user is logged in, redirect
-//   if (session) {
-//     res.redirect(`/users/${session}`);
-//     return;
-//   }
-//   res.status(404).send("Page does not exist!");
-// });
+  // if user is logged in, redirect
+  if (session) {
+    res.redirect(`/users/${session}`);
+    return;
+  }
+  res.status(404).send("Page does not exist!");
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
