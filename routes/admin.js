@@ -1,5 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioNumber = process.env.TWILIO_PHONE_NUMBER;
+const client = require("twilio")(accountSid, authToken);
 
 module.exports = (db) => {
   // @route    GET /admin/orders
@@ -47,6 +51,7 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
         return;
       });
+    return router;
   });
 
   // @route    GET /admin/orders/:id
@@ -119,6 +124,7 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
         return;
       });
+    return router;
   });
 
   // @route    PUT /admin/orders/:order_id
@@ -128,6 +134,7 @@ module.exports = (db) => {
     const orderID = req.params.id;
     const { status } = req.body;
     const session = req.session.user_id;
+    let adminPhoneNumber = "";
 
     // checks user
     if (!session) {
@@ -142,8 +149,9 @@ module.exports = (db) => {
       .then((data) => {
         const user = data.rows;
         if (user.length !== 0) {
+          // update order status
           return db.query(
-            `UPDATE orders SET status = $1 WHERE id= $2 returning *;`,
+            `UPDATE orders SET status = $1 WHERE id= $2 RETURNING *;`,
             [status, orderID]
           );
         }
@@ -151,12 +159,44 @@ module.exports = (db) => {
         res.redirect("/menu");
         return;
       })
-      .then(() => {
-        console.log("Status updated!");
+      .then((data) => {
+        const { status } = data.rows[0];
+        console.log(`Status updated to ${status}!`);
+        if (status === "ready for pick up") {
+          // get user's phone number
+          const query = `
+          SELECT users.phone_number FROM users
+          JOIN orders on users.id = user_id
+          WHERE orders.id = $1;`;
+          const values = [orderID];
+          return db.query(query, values);
+        }
+      })
+      .then((data) => {
+        if (data) {
+          // send sms to user informing that order is ready
+          const userPhoneNumber = data.rows[0].phone_number;
+          const sms = `Your order is ready for pick-up. Order id: ${orderID}. Thank you for ordering at FOODSKIP!`;
+          const message = client.messages.create({
+            to: userPhoneNumber,
+            from: twilioNumber,
+            body: sms,
+          });
+          return message;
+        }
+      })
+      .then((message) => {
+        if (message) {
+          console.log("SMS sent! ", message.sid);
+        }
+        res.redirect("admin/orders");
+        return;
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
+        return;
       });
+    return router;
   });
 
   // @route    GET /admin/menu

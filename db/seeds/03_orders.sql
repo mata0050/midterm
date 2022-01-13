@@ -1,5 +1,5 @@
 insert into orders ( status, created_at, user_id) values ( 'active', '2021-08-29 17:44:40', 3);
-insert into orders ( status, created_at, user_id) values ( 'canceled', '2021-09-09 09:07:47', 5);
+insert into orders ( status, created_at, user_id) values ( 'cancelled', '2021-09-09 09:07:47', 5);
 insert into orders ( status, created_at, user_id) values ( 'completed', '2021-07-23 02:12:16', 3);
 insert into orders ( status, created_at, user_id) values ( 'completed', '2021-10-30 15:32:47', 7);
 insert into orders ( status, created_at, user_id) values ( 'ready for pick up', '2021-07-23 11:35:15', 9);

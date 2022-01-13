@@ -78,22 +78,27 @@ module.exports = (db) => {
             orderedDishes += msg;
           }
           const sms = `New order for FoodSkip! Let's get cookin'! Order_nr: ${orderID}. Details: ${orderedDishes}`;
-          return client.messages.create({
+          const orderMessage = client.messages.create({
             to: adminPhoneNumber,
             from: twilioNumber,
             body: sms,
           });
+          return orderMessage;
         })
-        .then(() => {
+        .then((orderMessage) => {
+          if (orderMessage) {
+            console.log("New order for FOODSKIP! ", orderMessage.sid);
+          }
           // send order confirmation SMS to user
           const sms = `Thank you for ordering at FoodSkip! Your order number is ${orderID}. Approximate waiting time: ${prepTime}. We will send you another message when your order is ready for pickup!`;
-          return client.messages.create({
+          const confirmationMessage = client.messages.create({
             to: userPhoneNumber,
             from: twilioNumber,
             body: sms,
           });
+          return confirmationMessage;
         })
-        .then(() => {
+        .then((confirmationMessage) => {
           res.send("Order received!");
           return;
         })
