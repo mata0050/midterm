@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Order Details</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- styles -->
+    <link rel="stylesheet" href="/styles/form-styles.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/admin-navbar.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/flash.js"></script>
+  </head>
+  <body>
+    <%- include('partials/_admin_navbar') %>
+
+    <main class="m-5 px-5">
+      <div class="card p-5">
+        <h4 class="pb-2">Order Details</h4>
+        <p><strong>Order id:</strong> <%= order.order_nr %></p>
+        <p><strong>Status:</strong> <%= order.status%></p>
+
+        <p><strong>Customer:</strong> <%= order.name%></p>
+        <p>
+          <strong>Order time:</strong> <%= order.time_ordered.toLocaleString()%>
+        </p>
+        <p>
+          <strong>Order price:</strong> $<%= (order.total_price /
+          100).toFixed(2)%>
+        </p>
+        <% if (order.waiting_time > 100) { %>
+        <p><strong>Estimated prep time:</strong> 1h 50min</p>
+        <% } else { %>
+        <p>
+          <strong>Estimated prep time: </strong>
+          <%=Math.floor( order.waiting_time / 60 )%>h <%=order.waiting_time - 60
+          * Math.floor(order.waiting_time / 60) %>min
+        </p>
+        <% } %>
+        <table class="table mt-3">
+          <thead>
+            <tr>
+              <th>Dish</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (let item of items) { %>
+            <tr>
+              <td><%= item.name %></td>
+              <td><%= item.count%></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+      <%- include('partials/_create_item_form') %>
+    </main>
+  </body>
+</html>
