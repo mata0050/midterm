@@ -46,7 +46,9 @@
             <% if (order.status === "active") { %>
             <td style="color: blue"><%= order.status %></td>
             <% } else if (order.status === "ready for pick up") { %>
-            <td style="color: darkgreen"><%= order.status %></td>
+            <td style="color: rgb(0, 119, 0)"><%= order.status %></td>
+            <% } else if (order.status === "completed") { %>
+            <td style="color: rgb(73, 80, 73)"><%= order.status %></td>
             <% } else { %>
             <td style="color: darkred"><%= order.status %></td>
             <% } %> <% if (order.waiting_time > 100) { %>
