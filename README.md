@@ -14,6 +14,35 @@
 <p align="center">
 <img src="./public/video/foodskip.gif" width="500"></p>
 
+## Description
+
+A food pick-up service ordering app built with Node.js, Express and JQuery, using PostgreSQL for development database. The app serves as an intermediary between the restaurant and client and integrates Twilio API for SMS notifications.
+
+## Key Features
+
+User:
+
+- Browse menu and orders
+- Order food
+- SMS notifications
+
+Restaurant:
+
+- CRUD for restaurant menu
+- Update order status
+- SMS notifications
+
+## Project Screenshots
+
+<p align="center">
+  <img src ="./public/images/order-summary.png" width="600"></p>
+ <p align="center">
+  <img src="./public/images/tiramisu.png" width="300">
+  <img src="./public/images/new-menu-item.png" width="300">
+  </p>
+ <p align="center">
+  <img src ="./public/images/user-orders.png" width="500"></p>
+
 ## Getting Started
 
 Follow these steps after setting up a local PostgreSQL database:
@@ -24,13 +53,11 @@ Follow these steps after setting up a local PostgreSQL database:
 4. Fix to binaries for sass: `npm rebuild node-sass`
 5. Reset database: `npm run db:reset`
 
-- Check the db folder to see what gets created and seeded in the SDB
-
-7. Run the server: `npm run local`
+6. Run the server: `npm run local`
 
 - Note: nodemon is used, so you should not have to restart your server
 
-8. Visit `http://localhost:8080/`
+7. Visit `http://localhost:8080/`
 
 ## Dependencies
 
@@ -43,3 +70,9 @@ Follow these steps after setting up a local PostgreSQL database:
 - pg-promise
 - sass
 - twilio
+
+## Future Improvements
+
+- Registration and login
+- User profile page
+- Cancelling order
