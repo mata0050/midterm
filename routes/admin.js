@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
-
-// utils
-const userUndefined = require("../utils/userUndefined");
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioNumber = process.env.TWILIO_PHONE_NUMBER;
+const client = require("twilio")(accountSid, authToken);
 
 module.exports = (db) => {
   // @route    GET /admin/orders
@@ -12,7 +13,11 @@ module.exports = (db) => {
     const session = req.session.user_id;
 
     // checks user
-    userUndefined(session, res);
+    if (!session) {
+      console.log("Must be logged in!");
+      res.redirect("/");
+      return;
+    }
 
     // check if user exists and is Admin
     const queryString = "SELECT * FROM users WHERE id = $1 AND admin = 'true'";
@@ -20,7 +25,6 @@ module.exports = (db) => {
     db.query(queryString, [session])
       .then((data) => {
         const user = data.rows;
-        console.log(user);
         if (user.length !== 0) {
           // All active orders
           return db.query(
@@ -47,6 +51,7 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
         return;
       });
+    return router;
   });
 
   // @route    GET /admin/orders/:id
@@ -58,7 +63,11 @@ module.exports = (db) => {
     let templateVars = {};
 
     // checks user
-    userUndefined(session, res);
+    if (!session) {
+      console.log("Must be logged in!");
+      res.redirect("/");
+      return;
+    }
 
     // check if user exists and is Admin
     const queryString = "SELECT * FROM users WHERE id = $1 AND admin = 'true'";
@@ -107,7 +116,6 @@ module.exports = (db) => {
       .then((data) => {
         const items = data.rows;
         templateVars.items = items;
-        console.log(templateVars);
         res.render("admin_order_details", templateVars);
         return;
       })
@@ -116,52 +124,79 @@ module.exports = (db) => {
         res.status(500).json({ error: err.message });
         return;
       });
+    return router;
   });
 
   // @route    PUT /admin/orders/:order_id
   // @desc     Mark order as complete status
   // @access   Private
-  router.put("/orders/:order_id", (req, res) => {
-    console.log("IM HERE", req.body);
-    const { order_id } = req.params;
+  router.put("/orders/:id", (req, res) => {
+    const orderID = req.params.id;
     const { status } = req.body;
     const session = req.session.user_id;
+    let adminPhoneNumber = "";
 
     // checks user
-    userUndefined(session, res);
+    if (!session) {
+      console.log("Must be logged in!");
+      res.redirect("/");
+      return;
+    }
 
     // check if user exists and is Admin
     const queryString = "SELECT * FROM users WHERE id = $1 AND admin = 'true'";
-
     db.query(queryString, [session])
       .then((data) => {
         const user = data.rows;
         if (user.length !== 0) {
-          db.query(`SELECT * FROM orders WHERE id = $1;`, [order_id])
-            .then((data) => {
-              const menuItems = data.rows;
-              const menu_item_id = menuItems[0].id;
-
-              const query =
-                "UPDATE orders SET status = $1 WHERE id=$2 RETURNING*";
-
-              db.query(query, [status, menu_item_id])
-                .then((data) => {
-                  const orders = data.rows;
-                  res.json(orders);
-                })
-                .catch((err) => {
-                  res.status(500).json({ error: err.message });
-                });
-            })
-            .catch((err) => {
-              res.status(500).json({ error: err.message });
-            });
+          // update order status
+          return db.query(
+            `UPDATE orders SET status = $1 WHERE id= $2 RETURNING *;`,
+            [status, orderID]
+          );
         }
+        console.log("not admin");
+        res.redirect("/menu");
+        return;
+      })
+      .then((data) => {
+        const { status } = data.rows[0];
+        console.log(`Status updated to ${status}!`);
+        if (status === "ready for pick up") {
+          // get user's phone number
+          const query = `
+          SELECT users.phone_number FROM users
+          JOIN orders on users.id = user_id
+          WHERE orders.id = $1;`;
+          const values = [orderID];
+          return db.query(query, values);
+        }
+      })
+      .then((data) => {
+        if (data) {
+          // send sms to user informing that order is ready
+          const userPhoneNumber = data.rows[0].phone_number;
+          const sms = `Your order is ready for pick-up. Order id: ${orderID}. Thank you for ordering at FOODSKIP!`;
+          const message = client.messages.create({
+            to: userPhoneNumber,
+            from: twilioNumber,
+            body: sms,
+          });
+          return message;
+        }
+      })
+      .then((message) => {
+        if (message) {
+          console.log("SMS sent! ", message.sid);
+        }
+        res.redirect("admin/orders");
+        return;
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
+        return;
       });
+    return router;
   });
 
   // @route    GET /admin/menu
