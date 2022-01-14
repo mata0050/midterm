@@ -71,7 +71,7 @@ app.get("/", (req, res) => {
     res.redirect("/menu");
     return;
   }
-  db.query(`SELECT * FROM menu_items LIMIT 9;`)
+  db.query(`SELECT * FROM menu_items LIMIT 6;`)
     .then((data) => {
       const menuItems = data.rows;
       const templateVars = {
